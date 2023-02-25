@@ -5,6 +5,11 @@
 npm install
 ```
 
+### Compiles sass for development
+```
+npm run scss
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
