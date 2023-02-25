@@ -1,0 +1,27 @@
+header {
+  background-color: $primary--light;
+  .container {
+    .row {
+      color: $text--light;
+      font-weight: bold;
+      padding: 10px 0;
+      .header__title {
+        p {
+          margin: 0;
+        }
+      }
+      .header__dark-mode-btn {
+        text-align: end;
+        button {
+          background-color: transparent;
+          border: 0;
+          font-weight: bold;
+          img {
+            width: 20px;
+            margin-inline-end: 10px;
+          }
+        }
+      }
+    }
+  }
+}

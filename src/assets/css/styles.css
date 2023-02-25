@@ -1,0 +1,188 @@
+.cards-details {
+  color: #000;
+  margin-top: 80px; }
+  .cards-details .cards-details-backBtn {
+    width: 16%;
+    position: relative;
+    font-size: 22px;
+    margin-bottom: 80px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    padding-inline-end: 0;
+    padding-inline-start: 20px; }
+    .cards-details .cards-details-backBtn img {
+      position: absolute;
+      width: 23px;
+      top: 15px;
+      left: 29px; }
+  .cards-details .cards-details__title {
+    margin-bottom: 30px; }
+  .cards-details .cards-details__img {
+    width: 100%;
+    height: 100%; }
+  .cards-details .cards-details__data {
+    list-style-type: none;
+    padding: 0; }
+    .cards-details .cards-details__data span {
+      margin-inline-start: 10px;
+      color: #696c6f; }
+  .cards-details .cards-details__related-data {
+    margin-top: 80px; }
+    .cards-details .cards-details__related-data p {
+      display: inline-block;
+      margin-inline-end: 20px; }
+    .cards-details .cards-details__related-data button {
+      margin-inline-end: 10px;
+      background-color: #fff;
+      color: #696c6f;
+      border: none;
+      padding: 5px 30px;
+      box-shadow: none;
+      margin-bottom: 10px; }
+
+@media (max-width: 992px) {
+  .cards-details .cards-details-backBtn {
+    width: 25%; } }
+
+@media (max-width: 767px) {
+  .cards-details {
+    margin-bottom: 40px; }
+    .cards-details .cards-details-backBtn {
+      width: 35%;
+      font-size: 15px; }
+      .cards-details .cards-details-backBtn img {
+        width: 16px; }
+    .cards-details .cards-details__img {
+      padding-bottom: 40px; } }
+
+.cards-listing {
+  margin-top: 60px; }
+  .cards-listing .cards-listing__actions {
+    margin-bottom: 60px; }
+    .cards-listing .cards-listing__actions .cards-listing__input .input-group .input-group-text,
+    .cards-listing .cards-listing__actions .cards-listing__input .input-group .form-control {
+      background-color: #fff;
+      border: none;
+      box-shadow: none;
+      color: #000; }
+      .cards-listing .cards-listing__actions .cards-listing__input .input-group .input-group-text::placeholder,
+      .cards-listing .cards-listing__actions .cards-listing__input .input-group .form-control::placeholder {
+        color: #696c6f;
+        font-size: 12px; }
+    .cards-listing .cards-listing__actions .cards-listing__input .input-group .input-group-text {
+      padding-inline-start: 18px; }
+      .cards-listing .cards-listing__actions .cards-listing__input .input-group .input-group-text img {
+        width: 15px;
+        filter: brightness(0.5); }
+    .cards-listing .cards-listing__actions .cards-listing__input .input-group .form-control {
+      padding-bottom: 12px; }
+    .cards-listing .cards-listing__actions .cards-listing__dropdown {
+      text-align: end; }
+      .cards-listing .cards-listing__actions .cards-listing__dropdown .dropdown .dropdown-toggle {
+        width: 25%;
+        background-color: #fff;
+        border: none;
+        box-shadow: none;
+        color: #696c6f;
+        font-size: 12px;
+        padding: 12px 20px; }
+        .cards-listing .cards-listing__actions .cards-listing__dropdown .dropdown .dropdown-toggle::after {
+          margin-inline-start: 65px; }
+      .cards-listing .cards-listing__actions .cards-listing__dropdown .dropdown .dropdown-menu {
+        background-color: #fff;
+        width: 25%; }
+        .cards-listing .cards-listing__actions .cards-listing__dropdown .dropdown .dropdown-menu li a {
+          color: #696c6f;
+          font-size: 14px;
+          padding-inline-end: 29px;
+          padding-inline-start: 27px; }
+  .cards-listing .cards-listing__cards {
+    row-gap: 80px; }
+    .cards-listing .cards-listing__cards a {
+      text-decoration: none; }
+
+header {
+  background-color: #fff; }
+  header .container .row {
+    color: #000;
+    font-weight: bold;
+    padding: 10px 0; }
+    header .container .row .header__title p {
+      margin: 0; }
+    header .container .row .header__dark-mode-btn {
+      text-align: end; }
+      header .container .row .header__dark-mode-btn button {
+        background-color: transparent;
+        border: 0;
+        font-weight: bold; }
+        header .container .row .header__dark-mode-btn button img {
+          width: 20px;
+          margin-inline-end: 10px; }
+
+.listing-card .listing-card__img img {
+  width: 100%;
+  height: 200px; }
+
+.listing-card .listing-card__body {
+  background-color: #fff;
+  color: #000;
+  padding: 20px; }
+  .listing-card .listing-card__body h2 {
+    font-size: 24px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden; }
+  .listing-card .listing-card__body ul {
+    list-style-type: none;
+    padding: 0; }
+    .listing-card .listing-card__body ul span {
+      margin-inline-start: 10px;
+      color: #696c6f; }
+
+body {
+  background-color: #f1f1f1; }
+  body .loader-container {
+    position: absolute;
+    top: 50%;
+    left: 50%; }
+    body .loader-container img {
+      width: 50px; }
+
+.dark-mode {
+  background-color: #212e37; }
+  .dark-mode header {
+    background-color: #2b3743; }
+    .dark-mode header .header__dark-mode-btn button img {
+      filter: invert(1); }
+  .dark-mode h2 {
+    color: #fff; }
+  .dark-mode li {
+    color: #fff; }
+    .dark-mode li span {
+      color: #ced2d6 !important; }
+  .dark-mode p {
+    color: #fff; }
+  .dark-mode button {
+    color: #ced2d6 !important;
+    background-color: #2b3743 !important; }
+    .dark-mode button img {
+      filter: invert(1); }
+  .dark-mode a button {
+    background-color: #2b3743 !important; }
+  .dark-mode .input-group-text {
+    background-color: #2b3743 !important; }
+  .dark-mode .input-group .form-control::placeholder {
+    color: #fff !important; }
+  .dark-mode .form-control {
+    background-color: #2b3743 !important; }
+  .dark-mode .dropdown ul {
+    background-color: #2b3743 !important; }
+    .dark-mode .dropdown ul li a {
+      color: #fff !important; }
+  .dark-mode .dropdown .dropdown-toggle {
+    background-color: #2b3743 !important; }
+  .dark-mode .listing-card__body {
+    background-color: #2b3743 !important; }

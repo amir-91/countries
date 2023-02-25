@@ -1,0 +1,66 @@
+.cards-listing {
+  margin-top: 60px;
+  .cards-listing__actions {
+    margin-bottom: 60px;
+    .cards-listing__input {
+      .input-group {
+        .input-group-text,
+        .form-control {
+          background-color: $primary--light;
+          border: none;
+          box-shadow: none;
+          color: $text--light;
+          &::placeholder {
+            color: $text-fade--light;
+            font-size: 12px;
+          }
+        }
+        .input-group-text {
+          padding-inline-start: 18px;
+          img {
+            width: 15px;
+            filter: brightness(0.5);
+          }
+        }
+        .form-control {
+          padding-bottom: 12px;
+        }
+      }
+    }
+    .cards-listing__dropdown {
+      text-align: end;
+      .dropdown {
+        .dropdown-toggle {
+          width: 25%;
+          background-color: $primary--light;
+          border: none;
+          box-shadow: none;
+          color: $text-fade--light;
+          font-size: 12px;
+          padding: 12px 20px;
+          &::after {
+            margin-inline-start: 65px;
+          }
+        }
+        .dropdown-menu {
+          background-color: $primary--light;
+          width: 25%;
+          li {
+            a {
+              color: $text-fade--light;
+              font-size: 14px;
+              padding-inline-end: 29px;
+              padding-inline-start: 27px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .cards-listing__cards {
+    row-gap: 80px;
+    a {
+      text-decoration: none;
+    }
+  }
+}
