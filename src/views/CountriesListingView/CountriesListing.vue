@@ -70,6 +70,13 @@
         </div>
       </div>
     </div>
+    <button
+      v-if="isDetails"
+      @click="backToAllCountries"
+      class="cards-listing__backBtn"
+    >
+      <img src="../../assets/images/arrow-left.svg" />Back
+    </button>
     <div class="row cards-listing__cards">
       <div
         v-for="(item, index) in countriesData"
@@ -107,6 +114,7 @@ export default {
       countriesData: [],
       countryInput: "",
       isLoading: true,
+      isDetails: false,
     };
   },
   methods: {
@@ -128,6 +136,7 @@ export default {
       );
     },
     getDataByCountry(country) {
+      this.isDetails = true;
       this.isLoading = true;
       searchByCountry(
         "https://restcountries.com/v3.1/name",
@@ -143,6 +152,7 @@ export default {
       );
     },
     getDataByRegion(region) {
+      this.isDetails = true;
       searchByRegion(
         "https://restcountries.com/v3.1/region",
         region,
@@ -155,6 +165,9 @@ export default {
           console.log(error);
         }
       );
+    },
+    backToAllCountries() {
+      window.location.reload();
     },
   },
   mounted() {

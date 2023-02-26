@@ -98,6 +98,22 @@
           font-size: 14px;
           padding-inline-end: 29px;
           padding-inline-start: 27px; }
+  .cards-listing .cards-listing__backBtn {
+    width: 16%;
+    position: relative;
+    font-size: 22px;
+    margin-bottom: 80px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    padding-inline-end: 0;
+    padding-inline-start: 20px; }
+    .cards-listing .cards-listing__backBtn img {
+      position: absolute;
+      width: 23px;
+      top: 15px;
+      left: 29px; }
   .cards-listing .cards-listing__cards {
     row-gap: 80px; }
     .cards-listing .cards-listing__cards a {
