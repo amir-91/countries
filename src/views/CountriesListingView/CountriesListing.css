@@ -1,5 +1,6 @@
 .cards-listing {
-  margin-top: 60px; }
+  margin-top: 60px;
+  margin-bottom: 100px; }
   .cards-listing .cards-listing__actions {
     margin-bottom: 60px; }
     .cards-listing .cards-listing__actions .cards-listing__input .input-group {
@@ -46,6 +47,8 @@
           font-size: 14px;
           padding-inline-end: 29px;
           padding-inline-start: 27px; }
+          body.dark-mode .cards-listing .cards-listing__actions .cards-listing__dropdown .dropdown .dropdown-menu li a:hover {
+            color: var(--primary); }
   .cards-listing .cards-listing__backBtn {
     width: 16%;
     position: relative;

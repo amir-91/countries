@@ -14,7 +14,9 @@
             Region:<span>{{ region }}</span>
           </li>
           <li>
-            Capital:<span>{{ capital ? capital[0] : "-" }}</span>
+            Capital:<span :title="capital">{{
+              capital ? capital[0] : "-"
+            }}</span>
           </li>
         </ul>
       </div>

@@ -1,5 +1,6 @@
 .cards-listing {
   margin-top: 60px;
+  margin-bottom: 100px;
   .cards-listing__actions {
     margin-bottom: 60px;
     .cards-listing__input {
@@ -57,6 +58,11 @@
               font-size: 14px;
               padding-inline-end: 29px;
               padding-inline-start: 27px;
+              body.dark-mode & {
+                &:hover {
+                  color: var(--primary);
+                }
+              }
             }
           }
         }
