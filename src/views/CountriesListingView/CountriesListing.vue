@@ -1,7 +1,7 @@
 <template>
   <div v-if="!isLoading" class="container cards-listing">
     <div class="row cards-listing__actions">
-      <div class="col-4 cards-listing__input">
+      <div class="col-lg-4 col-md-4 col-12 cards-listing__input">
         <div class="input-group flex-nowrap">
           <span class="input-group-text" id="addon-wrapping"
             ><img src="../../assets/images/search.svg"
@@ -17,7 +17,7 @@
           />
         </div>
       </div>
-      <div class="col-8 cards-listing__dropdown">
+      <div class="col-lg-8 col-md-8 col-12 cards-listing__dropdown">
         <div class="dropdown">
           <button
             class="btn btn-secondary dropdown-toggle"

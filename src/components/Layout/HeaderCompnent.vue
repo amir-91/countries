@@ -20,22 +20,32 @@ export default {
   methods: {
     darkModeToggling() {
       const theme = localStorage.getItem("theme");
-      if (theme === "dark") {
+      if (theme === "light") {
         this.enableDarkMode();
       } else {
         this.disableDarkMode();
       }
     },
     enableDarkMode() {
-      localStorage.setItem("theme", "light");
+      window.localStorage.setItem("theme", "dark");
       document.body.classList.add("dark-mode");
     },
 
     disableDarkMode() {
-      localStorage.setItem("theme", "dark");
+      window.localStorage.setItem("theme", "light");
       document.body.classList.remove("dark-mode");
     },
+    enableThemeOnreload() {
+      const theme = localStorage.getItem("theme");
+      if (theme === "dark") {
+        this.enableDarkMode();
+      } else {
+        this.disableDarkMode();
+      }
+    },
   },
-  mounted() {},
+  mounted() {
+    this.enableThemeOnreload();
+  },
 };
 </script>

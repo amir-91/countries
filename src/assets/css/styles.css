@@ -81,6 +81,8 @@
     .cards-listing .cards-listing__actions .cards-listing__dropdown {
       text-align: end; }
       .cards-listing .cards-listing__actions .cards-listing__dropdown .dropdown .dropdown-toggle {
+        position: relative;
+        text-align: start;
         width: 25%;
         background-color: #fff;
         border: none;
@@ -89,7 +91,9 @@
         font-size: 12px;
         padding: 12px 20px; }
         .cards-listing .cards-listing__actions .cards-listing__dropdown .dropdown .dropdown-toggle::after {
-          margin-inline-start: 65px; }
+          position: absolute;
+          right: 17px;
+          top: 20px; }
       .cards-listing .cards-listing__actions .cards-listing__dropdown .dropdown .dropdown-menu {
         background-color: #fff;
         width: 25%; }
@@ -118,6 +122,28 @@
     row-gap: 80px; }
     .cards-listing .cards-listing__cards a {
       text-decoration: none; }
+
+@media (max-width: 992px) {
+  .cards-listing .cards-listing__backBtn {
+    width: 25%; }
+  .cards-listing .cards-listing__actions .cards-listing__dropdown .dropdown .dropdown-toggle {
+    width: 40%; } }
+
+@media (max-width: 767px) {
+  .cards-listing {
+    margin-bottom: 40px; }
+    .cards-listing .cards-listing__backBtn {
+      width: 35%;
+      font-size: 15px; }
+      .cards-listing .cards-listing__backBtn img {
+        width: 16px; }
+    .cards-listing .cards-listing__actions .cards-listing__dropdown .dropdown {
+      text-align: start;
+      margin-top: 30px; }
+      .cards-listing .cards-listing__actions .cards-listing__dropdown .dropdown .dropdown-toggle {
+        width: 50%; }
+      .cards-listing .cards-listing__actions .cards-listing__dropdown .dropdown .dropdown-menu {
+        width: 50%; } }
 
 header {
   background-color: #fff; }
@@ -167,38 +193,82 @@ body {
     body .loader-container img {
       width: 50px; }
 
+:root {
+  --primary: #fff;
+  --secondary: #f1f1f1;
+  --text: #000;
+  --text-fade: #696c6f; }
+
 .dark-mode {
-  background-color: #212e37; }
-  .dark-mode header {
-    background-color: #2b3743; }
-    .dark-mode header .header__dark-mode-btn button img {
-      filter: invert(1); }
-  .dark-mode h2 {
-    color: #fff; }
-  .dark-mode li {
-    color: #fff; }
-    .dark-mode li span {
-      color: #ced2d6 !important; }
-  .dark-mode p {
-    color: #fff; }
-  .dark-mode button {
-    color: #ced2d6 !important;
-    background-color: #2b3743 !important; }
-    .dark-mode button img {
-      filter: invert(1); }
-  .dark-mode a button {
-    background-color: #2b3743 !important; }
-  .dark-mode .input-group-text {
-    background-color: #2b3743 !important; }
-  .dark-mode .input-group .form-control::placeholder {
-    color: #fff !important; }
-  .dark-mode .form-control {
-    background-color: #2b3743 !important; }
-  .dark-mode .dropdown ul {
-    background-color: #2b3743 !important; }
-    .dark-mode .dropdown ul li a {
-      color: #fff !important; }
-  .dark-mode .dropdown .dropdown-toggle {
-    background-color: #2b3743 !important; }
-  .dark-mode .listing-card__body {
-    background-color: #2b3743 !important; }
+  --primary: #2b3743;
+  --secondary: #212e37;
+  --text: #fff;
+  --text-fade: #ced2d6; }
+
+/* .dark-mode {
+  background-color: $secondary--dark;
+  header {
+    background-color: $primary--dark;
+    .header__dark-mode-btn {
+      button {
+        img {
+          filter: invert(1);
+        }
+      }
+    }
+  }
+  h2 {
+    color: $text--dark;
+  }
+  li {
+    color: $text--dark;
+    span {
+      color: $text-fade--dark !important;
+    }
+  }
+  p {
+    color: $text--dark;
+  }
+  button {
+    color: $text-fade--dark !important;
+    background-color: $primary--dark !important;
+    img {
+      filter: invert(1);
+    }
+  }
+  a {
+    button {
+      background-color: $primary--dark !important;
+    }
+  }
+  .input-group-text {
+    background-color: $primary--dark !important;
+  }
+  .input-group {
+    .form-control {
+      &::placeholder {
+        color: #fff !important;
+      }
+    }
+  }
+  .form-control {
+    color: #fff !important;
+    background-color: $primary--dark !important;
+  }
+  .dropdown {
+    ul {
+      background-color: $primary--dark !important;
+      li {
+        a {
+          color: #fff !important;
+        }
+      }
+    }
+    .dropdown-toggle {
+      background-color: $primary--dark !important;
+    }
+  }
+  .listing-card__body {
+    background-color: $primary--dark !important;
+  }
+} */
