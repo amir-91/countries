@@ -26,7 +26,7 @@ header {
 @media (max-width: 500px) {
   header .container .row {
     align-items: baseline; }
-    header .container .row .header__title p {
+    header .container .row .header__title a {
       font-size: 0.6rem; }
     header .container .row .header__dark-mode-btn button {
       font-size: 0.6rem; }
