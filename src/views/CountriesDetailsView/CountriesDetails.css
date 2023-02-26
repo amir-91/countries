@@ -36,6 +36,8 @@
       color: var(--text-fade); }
   .cards-details .cards-details__related-data {
     margin-top: 80px; }
+    .cards-details .cards-details__related-data .cards-details__related-data-btn {
+      display: inline-block; }
     .cards-details .cards-details__related-data p {
       display: inline-block;
       margin-inline-end: 20px; }

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!isLoading" class="container cards-details">
+  <div v-if="!isLoading && !isError" class="container cards-details">
     <router-link to="/">
       <button class="cards-details-backBtn">
         <img src="../../assets/images/arrow-left.svg" />Back
@@ -46,32 +46,37 @@
           </div>
           <div class="col-12 cards-details__related-data">
             <p>Border Countries:</p>
-            <span
+            <div
               v-for="(item, index) in renderedObject.borderCountries"
               :key="index"
+              class="cards-details__related-data-btn"
             >
               <router-link :to="`/countriesBorders/${item}`">
                 <button @click="goToBorderCountry(item)">{{ item }}</button>
               </router-link>
-            </span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="loader-container" v-else>
+  <div v-if="isLoading && !isError" class="loader-container">
     <img src="../../assets/images/loading-gif.gif" />
   </div>
+  <error-page v-if="isError"></error-page>
 </template>
 
 <script>
 import { searchByCode } from "../../services/services.js";
+import ErrorPage from "@/components/GenericComponents/ErrorPage/ErrorPage.vue";
 export default {
+  components: { ErrorPage },
   data() {
     return {
       countryDetails: {},
       renderedObject: {},
       isLoading: true,
+      isError: false,
     };
   },
   methods: {
@@ -81,26 +86,31 @@ export default {
         "https://restcountries.com/v3.1/alpha",
         countryCode,
         (res) => {
-          this.countryDetails = JSON.parse(JSON.stringify(res.data))[0];
-          this.renderedObject = {
-            nativeName: this.countryDetails.name.common,
-            population: this.countryDetails.population,
-            region: this.countryDetails.region,
-            subRegion: this.countryDetails.subregion,
-            capital: this.countryDetails.capital[0],
-            currencies: this.countryDetails.currencies,
-            languages: "",
-            startOfWeek: this.countryDetails.startOfWeek,
-            flagUrl: this.countryDetails.flags.png,
-            borderCountries: this.countryDetails.borders,
-          };
-          this.getCountryLanguages(this.countryDetails.languages);
-          this.getCountryCurrencies(this.countryDetails.currencies);
-          this.isLoading = false;
+          if (res.status == 200) {
+            this.countryDetails = JSON.parse(JSON.stringify(res.data))[0];
+            this.renderedObject = {
+              nativeName: this.countryDetails.name.common,
+              population: this.countryDetails.population,
+              region: this.countryDetails.region,
+              subRegion: this.countryDetails.subregion,
+              capital: this.countryDetails.capital[0],
+              currencies: this.countryDetails.currencies,
+              languages: "",
+              startOfWeek: this.countryDetails.startOfWeek,
+              flagUrl: this.countryDetails.flags.png,
+              borderCountries: this.countryDetails.borders,
+            };
+            this.getCountryLanguages(this.countryDetails.languages);
+            this.getCountryCurrencies(this.countryDetails.currencies);
+            this.isLoading = false;
+          } else {
+            this.isError = true;
+            this.isLoading = false;
+          }
         },
-        (error) => {
+        () => {
           this.isLoading = false;
-          console.log(error);
+          this.isError = true;
         }
       );
     },
@@ -117,7 +127,7 @@ export default {
     goToBorderCountry() {
       setTimeout(() => {
         window.location.reload();
-      }, 500);
+      }, 200);
     },
   },
   mounted() {

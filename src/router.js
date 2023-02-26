@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import CountriesDetails from "./views/CountriesDetailsView/CountriesDetails.vue";
 import CountriesListing from "./views/CountriesListingView/CountriesListing.vue";
 import CountryBorder from "./views/BorderCountriesView/BorderCountries.vue";
+import NotFound from "./components/GenericComponents/NotFound/NotFound.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -19,6 +20,7 @@ const router = createRouter({
       component: CountryBorder,
       props: true,
     },
+    { path: "/:notFound(.*)", component: NotFound },
   ],
 });
 

@@ -4,6 +4,8 @@
 @import "../../views/CountriesListingView/CountriesListing.scss";
 @import "../../components/Layout/HeaderComponent.scss";
 @import "../../components/GenericComponents/ListingCards/ListingCard.scss";
+@import "../../components/GenericComponents/ErrorPage/ErrorPage.scss";
+@import "../../components/GenericComponents/NotFound/NotFound.scss";
 
 body {
   background-color: var(--secondary);

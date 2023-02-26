@@ -36,6 +36,8 @@
       color: var(--text-fade); }
   .cards-details .cards-details__related-data {
     margin-top: 80px; }
+    .cards-details .cards-details__related-data .cards-details__related-data-btn {
+      display: inline-block; }
     .cards-details .cards-details__related-data p {
       display: inline-block;
       margin-inline-end: 20px; }
@@ -203,6 +205,26 @@ header {
       .listing-card .listing-card__body ul span {
         margin-inline-start: 10px;
         color: var(--text-fade); }
+
+.error-page {
+  text-align: center;
+  position: absolute;
+  top: 20%;
+  left: 20%; }
+  .error-page p {
+    font-size: 40px;
+    color: red; }
+
+.notFound {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  text-align: center; }
+  .notFound img {
+    margin-bottom: 40px; }
+  .notFound .notFound__action a {
+    color: #000;
+    font-size: 30px; }
 
 body {
   background-color: var(--secondary); }

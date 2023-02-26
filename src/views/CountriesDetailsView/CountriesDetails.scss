@@ -43,6 +43,9 @@
   }
   .cards-details__related-data {
     margin-top: 80px;
+    .cards-details__related-data-btn {
+      display: inline-block;
+    }
     p {
       display: inline-block;
       margin-inline-end: 20px;

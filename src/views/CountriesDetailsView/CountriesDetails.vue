@@ -54,12 +54,13 @@
             class="col-12 cards-details__related-data"
           >
             <p>Border Countries:</p>
-            <span
+            <div
               v-for="(item, index) in renderedObject.borderCountries"
               :key="index"
+              class="cards-details__related-data-btn"
             >
               <button @click="goToBorderCountry(item)">{{ item }}</button>
-            </span>
+            </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,10 @@
+.notFound {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  text-align: center; }
+  .notFound img {
+    margin-bottom: 40px; }
+  .notFound .notFound__action a {
+    color: #000;
+    font-size: 30px; }
