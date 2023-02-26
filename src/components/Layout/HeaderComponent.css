@@ -19,3 +19,13 @@ header {
           margin-inline-end: 10px; }
           body.dark-mode header .container .row .header__dark-mode-btn button img {
             filter: invert(1); }
+
+@media (max-width: 500px) {
+  header .container .row {
+    align-items: baseline; }
+    header .container .row .header__title p {
+      font-size: 0.6rem; }
+    header .container .row .header__dark-mode-btn button {
+      font-size: 0.6rem; }
+      header .container .row .header__dark-mode-btn button img {
+        width: 15px; } }

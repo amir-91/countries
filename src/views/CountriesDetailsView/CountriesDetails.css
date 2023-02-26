@@ -64,6 +64,8 @@
       width: 35%;
       font-size: 15px; }
       .cards-details .cards-details-backBtn img {
-        width: 16px; }
+        width: 16px;
+        top: 13px;
+        left: 14px; }
     .cards-details .cards-details__img {
       padding-bottom: 40px; } }

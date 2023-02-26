@@ -64,7 +64,9 @@
       width: 35%;
       font-size: 15px; }
       .cards-details .cards-details-backBtn img {
-        width: 16px; }
+        width: 16px;
+        top: 13px;
+        left: 14px; }
     .cards-details .cards-details__img {
       padding-bottom: 40px; } }
 
@@ -186,6 +188,16 @@ header {
           margin-inline-end: 10px; }
           body.dark-mode header .container .row .header__dark-mode-btn button img {
             filter: invert(1); }
+
+@media (max-width: 500px) {
+  header .container .row {
+    align-items: baseline; }
+    header .container .row .header__title p {
+      font-size: 0.6rem; }
+    header .container .row .header__dark-mode-btn button {
+      font-size: 0.6rem; }
+      header .container .row .header__dark-mode-btn button img {
+        width: 15px; } }
 
 .listing-card {
   box-shadow: 0px 3px 6px #00000029; }

@@ -17,7 +17,7 @@
       <div class="col-lg-6 col-md-6 col-12">
         <div class="row">
           <h2 class="cards-details__title">{{ renderedObject.nativeName }}</h2>
-          <div class="col-6">
+          <div class="col-lg-6 col-md-6 col-12">
             <ul class="cards-details__data">
               <li>
                 Native Name:<span>{{ renderedObject.nativeName }}</span>
@@ -36,7 +36,7 @@
               </li>
             </ul>
           </div>
-          <div class="col-6">
+          <div class="col-lg-6 col-md-6 col-12">
             <ul class="cards-details__data">
               <li>
                 Currencies:<span>{{ renderedObject.currencies }}</span>
