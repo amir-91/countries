@@ -1,6 +1,7 @@
 .cards-details {
   color: var(--text);
-  margin-top: 80px; }
+  margin-top: 80px;
+  margin-bottom: 100px; }
   .cards-details .cards-details-backBtn {
     width: 16%;
     position: relative;
@@ -12,7 +13,8 @@
     padding: 10px;
     padding-inline-end: 0;
     padding-inline-start: 20px;
-    color: var(--text); }
+    color: var(--text);
+    box-shadow: 0px 3px 6px #00000029; }
     .cards-details .cards-details-backBtn img {
       position: absolute;
       width: 23px;
@@ -24,7 +26,8 @@
     margin: 30px 0; }
   .cards-details .cards-details__img {
     width: 100%;
-    height: 100%; }
+    height: 100%;
+    max-height: 400px; }
   .cards-details .cards-details__data {
     list-style-type: none;
     padding: 0; }
@@ -43,9 +46,12 @@
       border: none;
       padding: 5px 30px;
       box-shadow: none;
-      margin-bottom: 10px; }
+      margin-bottom: 10px;
+      box-shadow: 0px 3px 6px #00000029; }
 
 @media (max-width: 992px) {
+  .cards-details .cards-details__related-data {
+    margin-top: 10px; }
   .cards-details .cards-details-backBtn {
     width: 25%; } }
 
@@ -64,26 +70,29 @@
   margin-top: 60px; }
   .cards-listing .cards-listing__actions {
     margin-bottom: 60px; }
-    .cards-listing .cards-listing__actions .cards-listing__input .input-group .input-group-text,
-    .cards-listing .cards-listing__actions .cards-listing__input .input-group .form-control {
-      background-color: var(--primary);
-      border: none;
-      box-shadow: none;
-      color: var(--text); }
-      .cards-listing .cards-listing__actions .cards-listing__input .input-group .input-group-text::placeholder,
-      .cards-listing .cards-listing__actions .cards-listing__input .input-group .form-control::placeholder {
-        color: var(--text-fade);
-        font-size: 12px; }
-    .cards-listing .cards-listing__actions .cards-listing__input .input-group .input-group-text {
-      padding-inline-start: 18px; }
-      .cards-listing .cards-listing__actions .cards-listing__input .input-group .input-group-text img {
-        width: 15px;
-        filter: brightness(0.5); }
-    .cards-listing .cards-listing__actions .cards-listing__input .input-group .form-control {
-      padding-bottom: 12px; }
+    .cards-listing .cards-listing__actions .cards-listing__input .input-group {
+      box-shadow: 0px 3px 6px #00000029; }
+      .cards-listing .cards-listing__actions .cards-listing__input .input-group .input-group-text,
+      .cards-listing .cards-listing__actions .cards-listing__input .input-group .form-control {
+        background-color: var(--primary);
+        border: none;
+        box-shadow: none;
+        color: var(--text); }
+        .cards-listing .cards-listing__actions .cards-listing__input .input-group .input-group-text::placeholder,
+        .cards-listing .cards-listing__actions .cards-listing__input .input-group .form-control::placeholder {
+          color: var(--text-fade);
+          font-size: 12px; }
+      .cards-listing .cards-listing__actions .cards-listing__input .input-group .input-group-text {
+        padding-inline-start: 18px; }
+        .cards-listing .cards-listing__actions .cards-listing__input .input-group .input-group-text img {
+          width: 15px;
+          filter: brightness(0.5); }
+      .cards-listing .cards-listing__actions .cards-listing__input .input-group .form-control {
+        padding-bottom: 12px; }
     .cards-listing .cards-listing__actions .cards-listing__dropdown {
       text-align: end; }
       .cards-listing .cards-listing__actions .cards-listing__dropdown .dropdown .dropdown-toggle {
+        box-shadow: 0px 3px 6px #00000029;
         position: relative;
         text-align: start;
         width: 25%;
@@ -152,7 +161,8 @@
         width: 50%; } }
 
 header {
-  background-color: var(--primary); }
+  background-color: var(--primary);
+  box-shadow: 0px 3px 6px #00000029; }
   header .container .row {
     color: var(--text);
     font-weight: bold;
@@ -172,26 +182,27 @@ header {
           body.dark-mode header .container .row .header__dark-mode-btn button img {
             filter: invert(1); }
 
-.listing-card .listing-card__img img {
-  width: 100%;
-  height: 200px; }
-
-.listing-card .listing-card__body {
-  background-color: var(--primary);
-  color: var(--text);
-  padding: 20px; }
-  .listing-card .listing-card__body h2 {
-    font-size: 24px;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden; }
-  .listing-card .listing-card__body ul {
-    list-style-type: none;
-    padding: 0; }
-    .listing-card .listing-card__body ul span {
-      margin-inline-start: 10px;
-      color: var(--text-fade); }
+.listing-card {
+  box-shadow: 0px 3px 6px #00000029; }
+  .listing-card .listing-card__img img {
+    width: 100%;
+    height: 200px; }
+  .listing-card .listing-card__body {
+    background-color: var(--primary);
+    color: var(--text);
+    padding: 20px; }
+    .listing-card .listing-card__body h2 {
+      font-size: 24px;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden; }
+    .listing-card .listing-card__body ul {
+      list-style-type: none;
+      padding: 0; }
+      .listing-card .listing-card__body ul span {
+        margin-inline-start: 10px;
+        color: var(--text-fade); }
 
 body {
   background-color: var(--secondary); }

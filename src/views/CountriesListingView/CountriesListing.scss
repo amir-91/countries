@@ -4,6 +4,7 @@
     margin-bottom: 60px;
     .cards-listing__input {
       .input-group {
+        box-shadow: 0px 3px 6px #00000029;
         .input-group-text,
         .form-control {
           background-color: var(--primary);
@@ -31,6 +32,7 @@
       text-align: end;
       .dropdown {
         .dropdown-toggle {
+          box-shadow: 0px 3px 6px #00000029;
           position: relative;
           text-align: start;
           width: 25%;

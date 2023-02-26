@@ -26,12 +26,12 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Filter by Region
+            {{ dropDownText }}
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <li>
               <a
-                @click="getDataByRegion('africa')"
+                @click="getDataByRegion('Africa')"
                 class="dropdown-item"
                 href="#"
                 >Africa</a
@@ -39,20 +39,20 @@
             </li>
             <li>
               <a
-                @click="getDataByRegion('america')"
+                @click="getDataByRegion('America')"
                 class="dropdown-item"
                 href="#"
                 >America</a
               >
             </li>
             <li>
-              <a @click="getDataByRegion('asia')" class="dropdown-item" href="#"
+              <a @click="getDataByRegion('Asia')" class="dropdown-item" href="#"
                 >Asia</a
               >
             </li>
             <li>
               <a
-                @click="getDataByRegion('europe')"
+                @click="getDataByRegion('Europe')"
                 class="dropdown-item"
                 href="#"
                 >Europe</a
@@ -60,7 +60,7 @@
             </li>
             <li>
               <a
-                @click="getDataByRegion('oceania')"
+                @click="getDataByRegion('Oceania')"
                 class="dropdown-item"
                 href="#"
                 >Oceania</a
@@ -115,6 +115,7 @@ export default {
       countryInput: "",
       isLoading: true,
       isDetails: false,
+      dropDownText: "Filter by Region",
     };
   },
   methods: {
@@ -152,6 +153,7 @@ export default {
       );
     },
     getDataByRegion(region) {
+      this.dropDownText = region;
       this.isDetails = true;
       searchByRegion(
         "https://restcountries.com/v3.1/region",

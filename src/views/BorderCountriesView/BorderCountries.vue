@@ -50,7 +50,12 @@
               v-for="(item, index) in renderedObject.borderCountries"
               :key="index"
             >
-              <button @click="goToBorderCountry(item)">{{ item }}</button>
+              <router-link
+                @click="goToBorderCountry(item)"
+                :to="`/countriesBorders/${item}`"
+              >
+                <button>{{ item }}</button>
+              </router-link>
             </span>
           </div>
         </div>
@@ -74,7 +79,6 @@ export default {
   },
   methods: {
     getCountriesDetails() {
-      console.log("details entered");
       let countryCode = this.$route.params.code;
       searchByCode(
         "https://restcountries.com/v3.1/alpha",
@@ -113,8 +117,7 @@ export default {
         this.renderedObject.currencies = value.name;
       }
     },
-    goToBorderCountry(country) {
-      this.$router.push("/countriesBorders/" + country);
+    goToBorderCountry() {
       this.getCountriesDetails();
     },
   },
