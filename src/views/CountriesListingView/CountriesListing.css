@@ -86,7 +86,9 @@
       width: 35%;
       font-size: 15px; }
       .cards-listing .cards-listing__backBtn img {
-        width: 16px; }
+        width: 16px;
+        top: 13px;
+        left: 14px; }
     .cards-listing .cards-listing__actions .cards-listing__dropdown .dropdown {
       text-align: start;
       margin-top: 30px; }
