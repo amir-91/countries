@@ -8,7 +8,11 @@
 
     <div class="row">
       <div class="col-lg-6 col-md-6 col-12">
-        <img class="cards-details__img" :src="renderedObject.flagUrl" />
+        <img
+          @error="onErrorImg"
+          class="cards-details__img"
+          :src="renderedObject.flagUrl"
+        />
       </div>
       <div class="col-lg-6 col-md-6 col-12">
         <div class="row">
@@ -68,6 +72,7 @@
 
 <script>
 import { searchByCountry } from "../../services/services.js";
+import defaultImage from "../../assets/images/brokenImg.svg";
 export default {
   data() {
     return {
@@ -118,6 +123,9 @@ export default {
       for (const [, value] of Object.entries(currency)) {
         this.renderedObject.currencies = value.name;
       }
+    },
+    onErrorImg(e) {
+      e.target.src = defaultImage;
     },
   },
   mounted() {

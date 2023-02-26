@@ -2,7 +2,7 @@
   <router-link :to="detailsLink">
     <div class="listing-card">
       <div class="listing-card__img">
-        <img :src="flag" />
+        <img @error="onErrorImg" :src="flag" />
       </div>
       <div class="listing-card__body">
         <h2 :title="name">{{ name }}</h2>
@@ -23,8 +23,14 @@
 </template>
 
 <script>
+import defaultImage from "../../../assets/images/brokenImg.svg";
 export default {
   props: ["region", "population", "capital", "name", "flag"],
+  methods: {
+    onErrorImg(e) {
+      e.target.src = defaultImage;
+    },
+  },
   computed: {
     detailsLink() {
       return this.$route.path + "/" + this.name;

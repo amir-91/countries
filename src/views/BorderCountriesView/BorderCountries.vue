@@ -50,11 +50,8 @@
               v-for="(item, index) in renderedObject.borderCountries"
               :key="index"
             >
-              <router-link
-                @click="goToBorderCountry(item)"
-                :to="`/countriesBorders/${item}`"
-              >
-                <button>{{ item }}</button>
+              <router-link :to="`/countriesBorders/${item}`">
+                <button @click="goToBorderCountry(item)">{{ item }}</button>
               </router-link>
             </span>
           </div>
@@ -118,7 +115,9 @@ export default {
       }
     },
     goToBorderCountry() {
-      this.getCountriesDetails();
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
     },
   },
   mounted() {
