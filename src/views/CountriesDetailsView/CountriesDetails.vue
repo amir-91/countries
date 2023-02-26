@@ -45,7 +45,10 @@
               </li>
             </ul>
           </div>
-          <div class="col-12 cards-details__related-data">
+          <div
+            v-if="renderedObject.borderCountries"
+            class="col-12 cards-details__related-data"
+          >
             <p>Border Countries:</p>
             <span
               v-for="(item, index) in renderedObject.borderCountries"

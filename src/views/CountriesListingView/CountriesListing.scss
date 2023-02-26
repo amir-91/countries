@@ -6,12 +6,12 @@
       .input-group {
         .input-group-text,
         .form-control {
-          background-color: $primary--light;
+          background-color: var(--primary);
           border: none;
           box-shadow: none;
-          color: $text--light;
+          color: var(--text);
           &::placeholder {
-            color: $text-fade--light;
+            color: var(--text-fade);
             font-size: 12px;
           }
         }
@@ -34,10 +34,10 @@
           position: relative;
           text-align: start;
           width: 25%;
-          background-color: $primary--light;
+          background-color: var(--primary);
           border: none;
           box-shadow: none;
-          color: $text-fade--light;
+          color: var(--text-fade);
           font-size: 12px;
           padding: 12px 20px;
           &::after {
@@ -47,11 +47,11 @@
           }
         }
         .dropdown-menu {
-          background-color: $primary--light;
+          background-color: var(--primary);
           width: 25%;
           li {
             a {
-              color: $text-fade--light;
+              color: var(--text-fade);
               font-size: 14px;
               padding-inline-end: 29px;
               padding-inline-start: 27px;
@@ -66,7 +66,8 @@
     position: relative;
     font-size: 22px;
     margin-bottom: 80px;
-    background-color: #fff;
+    background-color: var(--primary);
+    color: var(--text);
     border-radius: 10px;
     border: none;
     padding: 10px;
@@ -77,6 +78,9 @@
       width: 23px;
       top: 15px;
       left: 29px;
+      body.dark-mode & {
+        filter: invert(1);
+      }
     }
   }
   .cards-listing__cards {

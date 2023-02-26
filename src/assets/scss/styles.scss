@@ -6,7 +6,7 @@
 @import "../../components/GenericComponents/ListingCards/ListingCard.scss";
 
 body {
-  background-color: $secondary--light;
+  background-color: var(--secondary);
   .loader-container {
     position: absolute;
     top: 50%;
@@ -29,70 +29,3 @@ body {
   --text: #fff;
   --text-fade: #ced2d6;
 }
-/* .dark-mode {
-  background-color: $secondary--dark;
-  header {
-    background-color: $primary--dark;
-    .header__dark-mode-btn {
-      button {
-        img {
-          filter: invert(1);
-        }
-      }
-    }
-  }
-  h2 {
-    color: $text--dark;
-  }
-  li {
-    color: $text--dark;
-    span {
-      color: $text-fade--dark !important;
-    }
-  }
-  p {
-    color: $text--dark;
-  }
-  button {
-    color: $text-fade--dark !important;
-    background-color: $primary--dark !important;
-    img {
-      filter: invert(1);
-    }
-  }
-  a {
-    button {
-      background-color: $primary--dark !important;
-    }
-  }
-  .input-group-text {
-    background-color: $primary--dark !important;
-  }
-  .input-group {
-    .form-control {
-      &::placeholder {
-        color: #fff !important;
-      }
-    }
-  }
-  .form-control {
-    color: #fff !important;
-    background-color: $primary--dark !important;
-  }
-  .dropdown {
-    ul {
-      background-color: $primary--dark !important;
-      li {
-        a {
-          color: #fff !important;
-        }
-      }
-    }
-    .dropdown-toggle {
-      background-color: $primary--dark !important;
-    }
-  }
-  .listing-card__body {
-    background-color: $primary--dark !important;
-  }
-} */

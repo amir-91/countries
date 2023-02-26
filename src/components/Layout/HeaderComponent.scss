@@ -1,8 +1,8 @@
 header {
-  background-color: $primary--light;
+  background-color: var(--primary);
   .container {
     .row {
-      color: $text--light;
+      color: var(--text);
       font-weight: bold;
       padding: 10px 0;
       .header__title {
@@ -16,9 +16,13 @@ header {
           background-color: transparent;
           border: 0;
           font-weight: bold;
+          color: var(--text);
           img {
             width: 20px;
             margin-inline-end: 10px;
+            body.dark-mode & {
+              filter: invert(1);
+            }
           }
         }
       }
