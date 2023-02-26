@@ -9,7 +9,19 @@
   .notFound__action {
     a {
       color: #000;
+      body.dark-mode & {
+        color: #fff;
+      }
       font-size: 30px;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .notFound {
+    left: 0;
+    img {
+      width: 100%;
     }
   }
 }
