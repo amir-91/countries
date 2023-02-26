@@ -178,6 +178,9 @@ header {
     padding: 10px 0; }
     header .container .row .header__title p {
       margin: 0; }
+    header .container .row .header__title a {
+      text-decoration: none;
+      color: var(--text); }
     header .container .row .header__dark-mode-btn {
       text-align: end; }
       header .container .row .header__dark-mode-btn button {
@@ -219,6 +222,11 @@ header {
     .listing-card .listing-card__body ul {
       list-style-type: none;
       padding: 0; }
+      .listing-card .listing-card__body ul li {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden; }
       .listing-card .listing-card__body ul span {
         margin-inline-start: 10px;
         color: var(--text-fade); }

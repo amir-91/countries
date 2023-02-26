@@ -17,6 +17,9 @@
     ul {
       list-style-type: none;
       padding: 0;
+      li {
+        @include add-clamp(1);
+      }
       span {
         margin-inline-start: 10px;
         color: var(--text-fade);

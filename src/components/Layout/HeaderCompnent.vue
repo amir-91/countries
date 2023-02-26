@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col header__title">
-          <p>Where in the world ?</p>
+          <a href="/">Where in the world ?</a>
         </div>
         <div class="col header__dark-mode-btn">
           <button @click="darkModeToggling">
