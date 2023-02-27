@@ -82,6 +82,7 @@
         v-for="(item, index) in countriesData"
         :key="index"
         class="col-xl-3 col-lg-4 col-md-6 col-12"
+        @click="showPopUpDetails(item.name.common)"
       >
         <listing-card
           :name="item.name.common"
@@ -91,6 +92,12 @@
           :flag="item.flags.png"
         ></listing-card>
       </div>
+    </div>
+    <div v-if="showPopup" class="cards-listing__details">
+      <card-details
+        @hidePopup="hidePopup($event)"
+        :countryData="selectedCountryData"
+      ></card-details>
     </div>
   </div>
   <div class="loader-container" v-else>
@@ -105,9 +112,11 @@ import {
   searchByRegion,
 } from "../../services/services.js";
 import ListingCard from "../../components/GenericComponents/ListingCards/ListingCard.vue";
+import CardDetails from "../../views/CountriesDetailsView/CountriesDetails.vue";
 export default {
   components: {
     ListingCard,
+    CardDetails,
   },
   data() {
     return {
@@ -116,6 +125,9 @@ export default {
       isLoading: true,
       isDetails: false,
       dropDownText: "Filter by Region",
+      showPopup: false,
+      selectedCountry: "",
+      selectedCountryData: [],
     };
   },
   methods: {
@@ -139,6 +151,7 @@ export default {
     getDataByCountry(country) {
       this.isDetails = true;
       this.isLoading = true;
+      this.selectedCountry = country;
       searchByCountry(
         "https://restcountries.com/v3.1/name",
         country,
@@ -170,6 +183,30 @@ export default {
     },
     backToAllCountries() {
       window.location.reload();
+    },
+    getCountryDetails(country) {
+      this.isLoading = true;
+      searchByCountry(
+        "https://restcountries.com/v3.1/name",
+        country,
+        (res) => {
+          this.selectedCountryData = JSON.parse(JSON.stringify(res.data));
+          this.isLoading = false;
+        },
+        (error) => {
+          this.isLoading = false;
+          console.log(error);
+        }
+      );
+    },
+    showPopUpDetails(country) {
+      this.getCountryDetails(country);
+      this.showPopup = true;
+      document.body.classList.add("--stop-scroll");
+    },
+    hidePopup(event) {
+      this.showPopup = event;
+      document.body.classList.remove("--stop-scroll");
     },
   },
   mounted() {

@@ -72,6 +72,18 @@
     row-gap: 80px; }
     .cards-listing .cards-listing__cards a {
       text-decoration: none; }
+  .cards-listing .cards-listing__details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow: auto; }
+
+.--stop-scroll {
+  height: 100%;
+  overflow: hidden; }
 
 @media (max-width: 992px) {
   .cards-listing .cards-listing__backBtn {

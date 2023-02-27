@@ -1,11 +1,8 @@
 <template>
-  <div v-if="!isLoading" class="container cards-details">
-    <router-link to="/">
-      <button class="cards-details-backBtn">
-        <img src="../../assets/images/arrow-left.svg" />Back
-      </button>
-    </router-link>
-
+  <div v-if="!isLoading && showDetails" class="cards-details">
+    <a @click="hidePopUpDetails" class="cards-details-backBtn">
+      <img src="../../assets/images/close-icon.png" />
+    </a>
     <div class="row">
       <div class="col-lg-6 col-md-6 col-12">
         <img
@@ -17,7 +14,7 @@
       <div class="col-lg-6 col-md-6 col-12">
         <div class="row">
           <h2 class="cards-details__title">{{ renderedObject.nativeName }}</h2>
-          <div class="col-lg-6 col-md-6 col-12">
+          <div class="col-lg-6 col-md-12 col-12">
             <ul class="cards-details__data">
               <li>
                 Native Name:<span>{{ renderedObject.nativeName }}</span>
@@ -36,7 +33,7 @@
               </li>
             </ul>
           </div>
-          <div class="col-lg-6 col-md-6 col-12">
+          <div class="col-lg-6 col-md-12 col-12">
             <ul class="cards-details__data">
               <li>
                 Currencies:<span>{{ renderedObject.currencies }}</span>
@@ -59,7 +56,9 @@
               :key="index"
               class="cards-details__related-data-btn"
             >
-              <button @click="goToBorderCountry(item)">{{ item }}</button>
+              <button @click="getCountriesDetailsByCode(item)">
+                {{ item }}
+              </button>
             </div>
           </div>
         </div>
@@ -72,7 +71,7 @@
 </template>
 
 <script>
-import { searchByCountry } from "../../services/services.js";
+import { searchByCode } from "../../services/services.js";
 import defaultImage from "../../assets/images/brokenImg.svg";
 export default {
   data() {
@@ -80,40 +79,63 @@ export default {
       countryDetails: {},
       renderedObject: {},
       isLoading: true,
+      isCode: false,
+      showDetails: true,
     };
   },
+  props: ["countryData"],
   methods: {
-    getCountriesDetails() {
-      let countryName = this.$route.params.country;
-      searchByCountry(
-        "https://restcountries.com/v3.1/name",
-        countryName,
+    getCountriesDetailsByCode(countryCode) {
+      this.isCode = true;
+      searchByCode(
+        "https://restcountries.com/v3.1/alpha",
+        countryCode,
         (res) => {
-          this.countryDetails = JSON.parse(JSON.stringify(res.data))[0];
-          this.renderedObject = {
-            nativeName: this.countryDetails.name.common,
-            population: this.countryDetails.population,
-            region: this.countryDetails.region,
-            subRegion: this.countryDetails.subregion,
-            capital: this.countryDetails.capital[0],
-            currencies: this.countryDetails.currencies,
-            languages: "",
-            startOfWeek: this.countryDetails.startOfWeek,
-            flagUrl: this.countryDetails.flags.png,
-            borderCountries: this.countryDetails.borders,
-          };
-          this.getCountryLanguages(this.countryDetails.languages);
-          this.getCountryCurrencies(this.countryDetails.currencies);
-          this.isLoading = false;
+          if (res.status == 200) {
+            this.countryDetails = JSON.parse(JSON.stringify(res.data))[0];
+            this.renderedObject = {
+              nativeName: this.countryDetails.name.common,
+              population: this.countryDetails.population,
+              region: this.countryDetails.region,
+              subRegion: this.countryDetails.subregion,
+              capital: this.countryDetails.capital[0],
+              currencies: this.countryDetails.currencies,
+              languages: "",
+              startOfWeek: this.countryDetails.startOfWeek,
+              flagUrl: this.countryDetails.flags.png,
+              borderCountries: this.countryDetails.borders,
+            };
+            this.getCountryLanguages(this.countryDetails.languages);
+            this.getCountryCurrencies(this.countryDetails.currencies);
+            this.isLoading = false;
+          } else {
+            this.isError = true;
+            this.isLoading = false;
+          }
         },
-        (error) => {
+        () => {
           this.isLoading = false;
-          console.log(error);
+          this.isError = true;
         }
       );
     },
-    goToBorderCountry(country) {
-      this.$router.push("/countriesBorders/" + country);
+    handleReneredObject() {
+      this.countryDetails = JSON.parse(JSON.stringify(this.countryData[0]));
+      this.renderedObject = {
+        nativeName: this.countryDetails.name.common,
+        population: this.countryDetails.population,
+        region: this.countryDetails.region,
+        subRegion: this.countryDetails.subregion,
+        capital: this.countryDetails.capital[0],
+        currencies: this.countryDetails.currencies,
+        languages: "",
+        startOfWeek: this.countryDetails.startOfWeek,
+        flagUrl: this.countryDetails.flags.png,
+        borderCountries: this.countryDetails.borders,
+      };
+      this.getCountryLanguages(this.countryDetails.languages);
+      this.getCountryCurrencies(this.countryDetails.currencies);
+      this.isLoading = false;
     },
     getCountryLanguages(languages) {
       for (const [, value] of Object.entries(languages)) {
@@ -128,9 +150,12 @@ export default {
     onErrorImg(e) {
       e.target.src = defaultImage;
     },
+    hidePopUpDetails() {
+      this.$emit("hidePopup", false);
+    },
   },
   mounted() {
-    this.getCountriesDetails();
+    this.handleReneredObject();
   },
 };
 </script>

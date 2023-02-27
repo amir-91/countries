@@ -1,29 +1,25 @@
 <template>
-  <router-link :to="detailsLink">
-    <div class="listing-card">
-      <div class="listing-card__img">
-        <img @error="onErrorImg" :src="flag" />
-      </div>
-      <div class="listing-card__body">
-        <h2 :title="name">{{ name }}</h2>
-        <ul>
-          <li>
-            Population:<span>{{ population }}</span>
-          </li>
-          <li>
-            Region:<span>{{ region }}</span>
-          </li>
-          <li>
-            Capital:<span
-              class="listing-card__body--capital"
-              :title="capital"
-              >{{ capital ? capital[0] : "-" }}</span
-            >
-          </li>
-        </ul>
-      </div>
+  <div class="listing-card">
+    <div class="listing-card__img">
+      <img @error="onErrorImg" :src="flag" />
     </div>
-  </router-link>
+    <div class="listing-card__body">
+      <h2 :title="name">{{ name }}</h2>
+      <ul>
+        <li>
+          Population:<span>{{ population }}</span>
+        </li>
+        <li>
+          Region:<span>{{ region }}</span>
+        </li>
+        <li>
+          Capital:<span class="listing-card__body--capital" :title="capital">{{
+            capital ? capital[0] : "-"
+          }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -33,11 +29,6 @@ export default {
   methods: {
     onErrorImg(e) {
       e.target.src = defaultImage;
-    },
-  },
-  computed: {
-    detailsLink() {
-      return this.$route.path + "/" + this.name;
     },
   },
 };
