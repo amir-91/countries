@@ -36,6 +36,9 @@
   .cards-details__data {
     list-style-type: none;
     padding: 0;
+    li {
+      text-transform: capitalize;
+    }
     span {
       margin-inline-start: 10px;
       color: var(--text-fade);

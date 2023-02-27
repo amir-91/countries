@@ -23,7 +23,7 @@
                 Native Name:<span>{{ renderedObject.nativeName }}</span>
               </li>
               <li>
-                Populution:<span>{{ renderedObject.population }}</span>
+                Population:<span>{{ renderedObject.population }}</span>
               </li>
               <li>
                 Region:<span>{{ renderedObject.region }}</span>

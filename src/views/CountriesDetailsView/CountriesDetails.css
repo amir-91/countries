@@ -31,6 +31,8 @@
   .cards-details .cards-details__data {
     list-style-type: none;
     padding: 0; }
+    .cards-details .cards-details__data li {
+      text-transform: capitalize; }
     .cards-details .cards-details__data span {
       margin-inline-start: 10px;
       color: var(--text-fade); }
