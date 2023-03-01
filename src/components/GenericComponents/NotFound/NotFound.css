@@ -7,7 +7,7 @@
     margin-bottom: 40px; }
   .notFound .notFound__action a {
     color: #000;
-    font-size: 30px; }
+    font-size: 1.5rem; }
     body.dark-mode .notFound .notFound__action a {
       color: #fff; }
 

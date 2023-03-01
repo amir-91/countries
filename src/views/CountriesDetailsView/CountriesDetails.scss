@@ -2,20 +2,26 @@
   position: relative;
   color: var(--text);
   margin: 60px 100px;
-  min-height: 75%;
+  //min-height: 75%;
   background-color: var(--primary);
   padding: 100px 20px 80px;
+  .row {
+    margin: inherit;
+  }
   .cards-details-backBtn {
     position: absolute;
     cursor: pointer;
     top: 15px;
     right: 15px;
+    font-size: 40px;
+    color: #000;
     body.dark-mode & {
       filter: invert(1);
     }
   }
   .cards-details__title {
     margin: 30px 0;
+    font-weight: 600;
   }
   .cards-details__img {
     width: 100%;

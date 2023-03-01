@@ -14,7 +14,7 @@
         .cards-listing .cards-listing__actions .cards-listing__input .input-group .input-group-text::placeholder,
         .cards-listing .cards-listing__actions .cards-listing__input .input-group .form-control::placeholder {
           color: var(--text-fade);
-          font-size: 12px; }
+          font-size: 0.7rem; }
       .cards-listing .cards-listing__actions .cards-listing__input .input-group .input-group-text {
         padding-inline-start: 18px; }
         .cards-listing .cards-listing__actions .cards-listing__input .input-group .input-group-text img {
@@ -33,7 +33,7 @@
         border: none;
         box-shadow: none;
         color: var(--text-fade);
-        font-size: 12px;
+        font-size: 0.7rem;
         padding: 12px 20px; }
         .cards-listing .cards-listing__actions .cards-listing__dropdown .dropdown .dropdown-toggle::after {
           position: absolute;
@@ -52,7 +52,7 @@
   .cards-listing .cards-listing__backBtn {
     width: 16%;
     position: relative;
-    font-size: 22px;
+    font-size: 1rem;
     margin-bottom: 80px;
     background-color: var(--primary);
     color: var(--text);

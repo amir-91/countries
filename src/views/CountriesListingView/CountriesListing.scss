@@ -14,7 +14,7 @@
           color: var(--text);
           &::placeholder {
             color: var(--text-fade);
-            font-size: 12px;
+            font-size: 0.7rem;
           }
         }
         .input-group-text {
@@ -41,7 +41,7 @@
           border: none;
           box-shadow: none;
           color: var(--text-fade);
-          font-size: 12px;
+          font-size: 0.7rem;
           padding: 12px 20px;
           &::after {
             position: absolute;
@@ -72,7 +72,7 @@
   .cards-listing__backBtn {
     width: 16%;
     position: relative;
-    font-size: 22px;
+    font-size: 1rem;
     margin-bottom: 80px;
     background-color: var(--primary);
     color: var(--text);

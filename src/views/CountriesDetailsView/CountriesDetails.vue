@@ -1,7 +1,7 @@
 <template>
   <div v-if="!isLoading && showDetails" class="cards-details">
     <a @click="hidePopUpDetails" class="cards-details-backBtn">
-      <img src="../../assets/images/close-icon.png" />
+      <ion-icon name="close-circle-outline"></ion-icon>
     </a>
     <div class="row">
       <div class="col-lg-6 col-md-6 col-12">

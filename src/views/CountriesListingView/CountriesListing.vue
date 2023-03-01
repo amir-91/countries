@@ -4,8 +4,8 @@
       <div class="col-lg-4 col-md-4 col-12 cards-listing__input">
         <div class="input-group flex-nowrap">
           <span class="input-group-text" id="addon-wrapping"
-            ><img src="../../assets/images/search.svg"
-          /></span>
+            ><ion-icon name="search"></ion-icon
+          ></span>
           <input
             v-model="countryInput"
             type="text"

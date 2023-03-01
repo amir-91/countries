@@ -17,11 +17,10 @@ header {
         border: 0;
         font-weight: bold;
         color: var(--text); }
-        header .container .row .header__dark-mode-btn button img {
-          width: 20px;
-          margin-inline-end: 10px; }
-          body.dark-mode header .container .row .header__dark-mode-btn button img {
-            filter: invert(1); }
+        header .container .row .header__dark-mode-btn button .hydrated {
+          margin-inline-end: 5px; }
+        body.dark-mode header .container .row .header__dark-mode-btn button span {
+          filter: invert(1); }
 
 @media (max-width: 500px) {
   header .container .row {

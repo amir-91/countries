@@ -22,9 +22,10 @@ header {
           border: 0;
           font-weight: bold;
           color: var(--text);
-          img {
-            width: 20px;
-            margin-inline-end: 10px;
+          .hydrated {
+            margin-inline-end: 5px;
+          }
+          span {
             body.dark-mode & {
               filter: invert(1);
             }
