@@ -2,13 +2,26 @@
   <header>
     <div class="container">
       <div class="row">
-        <div class="col header__title">
-          <a href="/">Where in the world ?</a>
+        <div class="col-12 header__title">
+          <h1>IP Address Tracker</h1>
         </div>
-        <div class="col header__dark-mode-btn">
-          <button @click="darkModeToggling">
-            <!-- <img src="../../assets/images/moon-regular.svg" /> -->
-            <ion-icon name="moon"></ion-icon> Dark Mode
+        <div class="col-10 input-group mb-3">
+          <input
+            v-model="ipOrDomain"
+            type="text"
+            class="form-control"
+            placeholder="Search for any IP Address or Domain"
+            aria-label="Search for any IP Address or Domain"
+            aria-describedby="button-addon2"
+            @keyup.enter="searchByIpOrDomain(ipOrDomain)"
+          />
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            id="button-addon2"
+            @click="searchByIpOrDomain(ipOrDomain)"
+          >
+            <ion-icon name="chevron-forward-outline"></ion-icon>
           </button>
         </div>
       </div>
@@ -18,35 +31,17 @@
 
 <script>
 export default {
-  methods: {
-    darkModeToggling() {
-      const theme = localStorage.getItem("theme");
-      if (theme === "light") {
-        this.enableDarkMode();
-      } else {
-        this.disableDarkMode();
-      }
-    },
-    enableDarkMode() {
-      window.localStorage.setItem("theme", "dark");
-      document.body.classList.add("dark-mode");
-    },
-
-    disableDarkMode() {
-      window.localStorage.setItem("theme", "light");
-      document.body.classList.remove("dark-mode");
-    },
-    enableThemeOnreload() {
-      const theme = localStorage.getItem("theme");
-      if (theme === "dark") {
-        this.enableDarkMode();
-      } else {
-        this.disableDarkMode();
-      }
-    },
+  data() {
+    return {
+      ipOrDomain: this.currentIp,
+      ipData: [],
+      currentIp: "",
+    };
   },
-  mounted() {
-    this.enableThemeOnreload();
+  methods: {
+    searchByIpOrDomain(currentIp) {
+      this.$emit("ip", currentIp);
+    },
   },
 };
 </script>

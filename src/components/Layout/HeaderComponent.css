@@ -1,33 +1,33 @@
-header {
-  background-color: var(--primary);
-  box-shadow: 0px 3px 6px #00000029; }
-  header .container .row {
-    color: var(--text);
-    font-weight: bold;
-    padding: 10px 0; }
+header .container .row {
+  justify-content: center; }
+  header .container .row .header__title {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: #fff; }
+    header .container .row .header__title h1 {
+      font-weight: 700; }
     header .container .row .header__title p {
       margin: 0; }
-    header .container .row .header__title a {
-      text-decoration: none;
-      color: var(--text); }
-    header .container .row .header__dark-mode-btn {
-      text-align: end; }
-      header .container .row .header__dark-mode-btn button {
-        background-color: transparent;
-        border: 0;
-        font-weight: bold;
-        color: var(--text); }
-        header .container .row .header__dark-mode-btn button .hydrated {
-          margin-inline-end: 5px; }
-        body.dark-mode header .container .row .header__dark-mode-btn button span {
-          filter: invert(1); }
+  header .container .row .input-group {
+    width: 50%;
+    margin-bottom: 30px; }
+    header .container .row .input-group input {
+      border-radius: 15px 0 0 15px;
+      box-shadow: none; }
+    header .container .row .input-group button {
+      width: 13%;
+      background-color: #000;
+      box-shadow: none;
+      border-radius: 0 15px 15px 0; }
+      header .container .row .input-group button ion-icon {
+        color: #fff;
+        padding-top: 6px; }
 
-@media (max-width: 500px) {
-  header .container .row {
-    align-items: baseline; }
-    header .container .row .header__title a {
-      font-size: 0.6rem; }
-    header .container .row .header__dark-mode-btn button {
-      font-size: 0.6rem; }
-      header .container .row .header__dark-mode-btn button img {
-        width: 15px; } }
+@media (max-width: 1024px) {
+  header .container .row .input-group {
+    width: 70%; } }
+
+@media (max-width: 767px) {
+  header .container .row .input-group {
+    width: 100%; } }

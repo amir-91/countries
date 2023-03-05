@@ -1,0 +1,21 @@
+.IpSearch {
+  .row {
+    justify-content: center;
+    .IpSearch__map-container {
+      //position: fixed;
+      //bottom: 0;
+      height: 100vh;
+      padding: 0;
+    }
+  }
+}
+
+/* @media (max-width: 1024px) {
+  .IpSearch {
+    .row {
+      .IpSearch__map {
+        height: 400px !important;
+      }
+    }
+  }
+} */

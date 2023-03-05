@@ -1,0 +1,15 @@
+.data-card {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  position: absolute;
+  top: -20%;
+  z-index: 100;
+  width: 80%;
+  left: 10%; }
+  .data-card .data-card__body .col-12 {
+    border-inline-end: 1px solid; }
+  .data-card .data-card__body .data-card__body__title {
+    font-size: 0.6rem; }
+  .data-card .data-card__body .data-card__body__subtitle {
+    font-size: 0.9rem; }

@@ -1,14 +1,22 @@
 @import "./mixins.scss";
 @import "./varaibles.scss";
-@import "../../views/CountriesDetailsView/CountriesDetails.scss";
-@import "../../views/CountriesListingView/CountriesListing.scss";
 @import "../../components/Layout/HeaderComponent.scss";
-@import "../../components/GenericComponents/ListingCards/ListingCard.scss";
+@import "../../components/GenericComponents/DataCard/DataCard.scss";
 @import "../../components/GenericComponents/ErrorPage/ErrorPage.scss";
 @import "../../components/GenericComponents/NotFound/NotFound.scss";
+@import "../../views/MapView/MapView.scss";
 
 body {
-  background-color: var(--secondary);
+  background-image: url("../images/backgroung-img.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  overflow: hidden;
+
+  @media (max-width: 767px) {
+    overflow: auto;
+  }
+
   .loader-container {
     position: absolute;
     top: 50%;
@@ -25,11 +33,4 @@ body {
   --text: #000;
   --text-fade: #696c6f;
   font-size: 20px;
-}
-
-.dark-mode {
-  --primary: #2b3743;
-  --secondary: #212e37;
-  --text: #fff;
-  --text-fade: #ced2d6;
 }
