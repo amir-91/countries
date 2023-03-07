@@ -1,6 +1,8 @@
 .cards-listing {
   margin-top: 60px;
   margin-bottom: 100px; }
+  .cards-listing .cards-listing__no-data-matched h1 {
+    text-align: center; }
   .cards-listing .cards-listing__actions {
     margin-bottom: 60px; }
     .cards-listing .cards-listing__actions .cards-listing__input .input-group {
@@ -22,6 +24,9 @@
           filter: brightness(0.5); }
       .cards-listing .cards-listing__actions .cards-listing__input .input-group .form-control {
         padding-bottom: 12px; }
+    .cards-listing .cards-listing__actions .cards-listing__input .cards-listing__inputValidation {
+      color: red;
+      font-size: 0.8rem; }
     .cards-listing .cards-listing__actions .cards-listing__dropdown {
       text-align: end; }
       .cards-listing .cards-listing__actions .cards-listing__dropdown .dropdown .dropdown-toggle {

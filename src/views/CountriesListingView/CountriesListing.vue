@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!isLoading" class="container cards-listing">
+  <div v-if="!isLoading && !isError" class="container cards-listing">
     <div class="row cards-listing__actions">
       <div class="col-lg-4 col-md-4 col-12 cards-listing__input">
         <div class="input-group flex-nowrap">
@@ -13,8 +13,12 @@
             placeholder="Search for a country...."
             aria-label="Username"
             aria-describedby="addon-wrapping"
-            @keyup.enter="getDataByCountry(countryInput)"
+            @keyup.enter="filterDataByCountryName(countryInput)"
+            @input="filterDataByCountryName(countryInput)"
           />
+        </div>
+        <div class="cards-listing__inputValidation" v-if="!isValidCharLength">
+          Please enter at least 3 characters
         </div>
       </div>
       <div class="col-lg-8 col-md-8 col-12 cards-listing__dropdown">
@@ -31,7 +35,7 @@
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <li>
               <a
-                @click="getDataByRegion('Africa')"
+                @click="filterDataByRegion('Africa')"
                 class="dropdown-item"
                 href="#"
                 >Africa</a
@@ -39,20 +43,23 @@
             </li>
             <li>
               <a
-                @click="getDataByRegion('America')"
+                @click="filterDataByRegion('Americas')"
                 class="dropdown-item"
                 href="#"
                 >America</a
               >
             </li>
             <li>
-              <a @click="getDataByRegion('Asia')" class="dropdown-item" href="#"
+              <a
+                @click="filterDataByRegion('Asia')"
+                class="dropdown-item"
+                href="#"
                 >Asia</a
               >
             </li>
             <li>
               <a
-                @click="getDataByRegion('Europe')"
+                @click="filterDataByRegion('Europe')"
                 class="dropdown-item"
                 href="#"
                 >Europe</a
@@ -60,7 +67,7 @@
             </li>
             <li>
               <a
-                @click="getDataByRegion('Oceania')"
+                @click="filterDataByRegion('Oceania')"
                 class="dropdown-item"
                 href="#"
                 >Oceania</a
@@ -71,15 +78,31 @@
       </div>
     </div>
     <button
-      v-if="isDetails"
+      v-if="isFiltered"
       @click="backToAllCountries"
       class="cards-listing__backBtn"
     >
       <img src="../../assets/images/arrow-left.svg" />Back
     </button>
-    <div class="row cards-listing__cards">
+    <div v-if="!isFiltered" class="row cards-listing__cards">
       <div
         v-for="(item, index) in countriesData"
+        :key="index"
+        class="col-xl-3 col-lg-4 col-md-6 col-12"
+        @click="showPopUpDetails(item.name.common)"
+      >
+        <listing-card
+          :name="item.name.common"
+          :capital="item.capital"
+          :region="item.region"
+          :population="item.population"
+          :flag="item.flags.png"
+        ></listing-card>
+      </div>
+    </div>
+    <div v-else class="row cards-listing__cards">
+      <div
+        v-for="(item, index) in filteredData"
         :key="index"
         class="col-xl-3 col-lg-4 col-md-6 col-12"
         @click="showPopUpDetails(item.name.common)"
@@ -100,31 +123,36 @@
         :allCountriesData="countriesData"
       ></card-details>
     </div>
+    <div class="cards-listing__no-data-matched">
+      <h1 v-if="filteredData.length == 0">No Data Matching your search</h1>
+    </div>
   </div>
-  <div class="loader-container" v-else>
+  <div v-if="isLoading && !isError" class="loader-container">
     <img src="../../assets/images/loading-gif.gif" />
   </div>
+  <error-page v-if="isError"></error-page>
 </template>
 
 <script>
-import {
-  getAllCountries,
-  searchByCountry,
-  searchByRegion,
-} from "../../services/services.js";
+import { getAllCountries } from "../../services/services.js";
 import ListingCard from "../../components/GenericComponents/ListingCards/ListingCard.vue";
 import CardDetails from "../../views/CountriesDetailsView/CountriesDetails.vue";
+import ErrorPage from "../../components/GenericComponents/ErrorPage/ErrorPage.vue";
 export default {
   components: {
     ListingCard,
     CardDetails,
+    ErrorPage,
   },
   data() {
     return {
       countriesData: [],
+      filteredData: [],
       countryInput: "",
       isLoading: true,
-      isDetails: false,
+      isFiltered: false,
+      isError: false,
+      isValidCharLength: true,
       dropDownText: "Filter by Region",
       showPopup: false,
       selectedCountry: "",
@@ -141,72 +169,49 @@ export default {
             this.isLoading = false;
           } else {
             this.isLoading = false;
-            console.log("error");
+            this.isError = true;
           }
         },
-        (error) => {
-          console.log(error);
+        () => {
+          this.isError = true;
         }
       );
     },
-    getDataByCountry(country) {
-      this.isDetails = true;
-      this.isLoading = true;
-      this.selectedCountry = country;
-      searchByCountry(
-        "https://restcountries.com/v3.1/name",
-        country,
-        (res) => {
-          this.countriesData = JSON.parse(JSON.stringify(res.data));
-          this.isLoading = false;
-        },
-        (error) => {
-          this.isLoading = false;
-          console.log(error);
-        }
-      );
+    filterDataByCountryName(countryName) {
+      if (countryName.length < 3) {
+        this.isValidCharLength = false;
+        this.isFiltered = false;
+      } else {
+        this.isValidCharLength = true;
+        this.isFiltered = true;
+        this.isLoading = true;
+        this.selectedCountry = countryName;
+        this.filteredData = this.countriesData.filter((country) => {
+          return country.name.common
+            .toLowerCase()
+            .includes(countryName.toLowerCase());
+        });
+        this.isLoading = false;
+      }
     },
-    getDataByRegion(region) {
+    filterDataByRegion(region) {
       this.dropDownText = region;
-      this.isDetails = true;
+      this.isFiltered = true;
       this.isLoading = true;
-      searchByRegion(
-        "https://restcountries.com/v3.1/region",
-        region,
-        (res) => {
-          this.countriesData = JSON.parse(JSON.stringify(res.data));
-          this.isLoading = false;
-        },
-        (error) => {
-          this.isLoading = false;
-          console.log(error);
-        }
-      );
+      this.filteredData = this.countriesData.filter((country) => {
+        return country.region == region;
+      });
+      this.isLoading = false;
     },
     backToAllCountries() {
       window.location.reload();
     },
     getCountryDetails(country) {
-      //this.isLoading = true;
-      /* searchByCountry(
-        "https://restcountries.com/v3.1/name",
-        country,
-        (res) => {
-          this.selectedCountryData = JSON.parse(JSON.stringify(res.data));
-          this.isLoading = false;
-        },
-        (error) => {
-          this.isLoading = false;
-          console.log(error);
-        }
-      ); */
-      console.log(country);
       this.selectedCountryData = this.countriesData.filter(
         (selectedCountry) => {
           return selectedCountry.name.common == country;
         }
       );
-      console.log(this.selectedCountryData);
     },
     showPopUpDetails(country) {
       this.getCountryDetails(country);

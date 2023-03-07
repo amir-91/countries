@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!isLoading && showDetails" class="cards-details">
+  <div v-if="!isLoading && showDetails && !isError" class="cards-details">
     <a @click="hidePopUpDetails" class="cards-details-backBtn">
       <ion-icon name="close-circle-outline"></ion-icon>
     </a>
@@ -65,14 +65,16 @@
       </div>
     </div>
   </div>
-  <div class="loader-container" v-else>
+  <div v-if="isLoading" class="loader-container">
     <img src="../../assets/images/loading-gif.gif" />
   </div>
+  <error-page v-if="isError"></error-page>
 </template>
 
 <script>
 import { searchByCode } from "../../services/services.js";
 import defaultImage from "../../assets/images/brokenImg.svg";
+import ErrorPage from "@/components/GenericComponents/ErrorPage/ErrorPage.vue";
 export default {
   data() {
     return {
@@ -80,7 +82,12 @@ export default {
       renderedObject: {},
       isLoading: true,
       showDetails: true,
+      isError: false,
     };
+  },
+  emits: ["hidePopup"],
+  components: {
+    ErrorPage,
   },
   props: ["countryData", "allCountriesData"],
   methods: {
