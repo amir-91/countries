@@ -92,6 +92,7 @@ export default {
   props: ["countryData", "allCountriesData"],
   methods: {
     getCountriesDetailsByCode(countryCode) {
+      this.isLoading = true;
       searchByCode(
         "https://restcountries.com/v3.1/alpha",
         countryCode,

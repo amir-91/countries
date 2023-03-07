@@ -77,13 +77,6 @@
         </div>
       </div>
     </div>
-    <button
-      v-if="isFiltered"
-      @click="backToAllCountries"
-      class="cards-listing__backBtn"
-    >
-      <img src="../../assets/images/arrow-left.svg" />Back
-    </button>
     <div v-if="!isFiltered" class="row cards-listing__cards">
       <div
         v-for="(item, index) in countriesData"
@@ -179,8 +172,13 @@ export default {
     },
     filterDataByCountryName(countryName) {
       if (countryName.length < 3) {
-        this.isValidCharLength = false;
-        this.isFiltered = false;
+        if (countryName.length == 0) {
+          this.isValidCharLength = true;
+          this.isFiltered = false;
+        } else {
+          this.isValidCharLength = false;
+          this.isFiltered = false;
+        }
       } else {
         this.isValidCharLength = true;
         this.isFiltered = true;
