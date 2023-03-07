@@ -79,14 +79,12 @@ export default {
       countryDetails: {},
       renderedObject: {},
       isLoading: true,
-      isCode: false,
       showDetails: true,
     };
   },
-  props: ["countryData"],
+  props: ["countryData", "allCountriesData"],
   methods: {
     getCountriesDetailsByCode(countryCode) {
-      this.isCode = true;
       searchByCode(
         "https://restcountries.com/v3.1/alpha",
         countryCode,

@@ -97,6 +97,7 @@
       <card-details
         @hidePopup="hidePopup($event)"
         :countryData="selectedCountryData"
+        :allCountriesData="countriesData"
       ></card-details>
     </div>
   </div>
@@ -168,6 +169,7 @@ export default {
     getDataByRegion(region) {
       this.dropDownText = region;
       this.isDetails = true;
+      this.isLoading = true;
       searchByRegion(
         "https://restcountries.com/v3.1/region",
         region,
@@ -185,8 +187,8 @@ export default {
       window.location.reload();
     },
     getCountryDetails(country) {
-      this.isLoading = true;
-      searchByCountry(
+      //this.isLoading = true;
+      /* searchByCountry(
         "https://restcountries.com/v3.1/name",
         country,
         (res) => {
@@ -197,7 +199,14 @@ export default {
           this.isLoading = false;
           console.log(error);
         }
+      ); */
+      console.log(country);
+      this.selectedCountryData = this.countriesData.filter(
+        (selectedCountry) => {
+          return selectedCountry.name.common == country;
+        }
       );
+      console.log(this.selectedCountryData);
     },
     showPopUpDetails(country) {
       this.getCountryDetails(country);

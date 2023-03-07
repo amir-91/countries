@@ -73,7 +73,7 @@
     .cards-listing .cards-listing__cards a {
       text-decoration: none; }
   .cards-listing .cards-listing__details {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 100%;

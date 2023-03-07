@@ -4,8 +4,6 @@
   margin: 60px 100px;
   background-color: var(--primary);
   padding: 100px 20px 80px; }
-  .cards-details .row {
-    margin: inherit; }
   .cards-details .cards-details-backBtn {
     position: absolute;
     cursor: pointer;
