@@ -171,6 +171,7 @@ export default {
       );
     },
     filterDataByCountryName(countryName) {
+      this.dropDownText = "Filter by Region";
       if (countryName.length < 3) {
         if (countryName.length == 0) {
           this.isValidCharLength = true;
