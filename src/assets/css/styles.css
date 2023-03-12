@@ -69,7 +69,8 @@
   margin-top: 60px;
   margin-bottom: 100px; }
   .cards-listing .cards-listing__no-data-matched h1 {
-    text-align: center; }
+    text-align: center;
+    color: var(--text); }
   .cards-listing .cards-listing__actions {
     margin-bottom: 60px; }
     .cards-listing .cards-listing__actions .cards-listing__input .input-group {
