@@ -1,82 +1,10 @@
 <template>
   <div v-if="!isLoading && !isError" class="container cards-listing">
-    <div class="row cards-listing__actions">
-      <div class="col-lg-4 col-md-4 col-12 cards-listing__input">
-        <div class="input-group flex-nowrap">
-          <span class="input-group-text" id="addon-wrapping"
-            ><ion-icon name="search"></ion-icon
-          ></span>
-          <input
-            v-model="countryInput"
-            type="text"
-            class="form-control"
-            placeholder="Search for a country...."
-            aria-label="Username"
-            aria-describedby="addon-wrapping"
-            @keyup.enter="filterDataByCountryName(countryInput)"
-            @input="filterDataByCountryName(countryInput)"
-          />
-        </div>
-        <div class="cards-listing__inputValidation" v-if="!isValidCharLength">
-          Please enter at least 3 characters
-        </div>
-      </div>
-      <div class="col-lg-8 col-md-8 col-12 cards-listing__dropdown">
-        <div class="dropdown">
-          <button
-            class="btn btn-secondary dropdown-toggle"
-            type="button"
-            id="dropdownMenuButton1"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            {{ dropDownText }}
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li>
-              <a
-                @click="filterDataByRegion('Africa')"
-                class="dropdown-item"
-                href="#"
-                >Africa</a
-              >
-            </li>
-            <li>
-              <a
-                @click="filterDataByRegion('Americas')"
-                class="dropdown-item"
-                href="#"
-                >America</a
-              >
-            </li>
-            <li>
-              <a
-                @click="filterDataByRegion('Asia')"
-                class="dropdown-item"
-                href="#"
-                >Asia</a
-              >
-            </li>
-            <li>
-              <a
-                @click="filterDataByRegion('Europe')"
-                class="dropdown-item"
-                href="#"
-                >Europe</a
-              >
-            </li>
-            <li>
-              <a
-                @click="filterDataByRegion('Oceania')"
-                class="dropdown-item"
-                href="#"
-                >Oceania</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <filters-component
+      @countryName="filterDataByCountryName($event)"
+      @countryRegion="filterDataByRegion($event)"
+      :isValidCharLength="isValidCharLength"
+    ></filters-component>
     <div v-if="!isFiltered" class="row cards-listing__cards">
       <div
         v-for="(item, index) in countriesData"
@@ -130,12 +58,14 @@
 import { getAllCountries } from "../../services/services.js";
 import ListingCard from "../../components/GenericComponents/ListingCards/ListingCard.vue";
 import CardDetails from "../../views/CountriesDetailsView/CountriesDetails.vue";
+import FiltersComponent from "@/components/GenericComponents/Filters/FiltersComponent.vue";
 import ErrorPage from "../../components/GenericComponents/ErrorPage/ErrorPage.vue";
 export default {
   components: {
     ListingCard,
     CardDetails,
     ErrorPage,
+    FiltersComponent,
   },
   data() {
     return {
@@ -145,11 +75,10 @@ export default {
       isLoading: true,
       isFiltered: false,
       isError: false,
-      isValidCharLength: true,
-      dropDownText: "Filter by Region",
       showPopup: false,
       selectedCountry: "",
       selectedCountryData: [],
+      isValidCharLength: true,
     };
   },
   methods: {
@@ -201,9 +130,6 @@ export default {
         return country.region == region;
       });
       this.isLoading = false;
-    },
-    backToAllCountries() {
-      window.location.reload();
     },
     getCountryDetails(country) {
       this.selectedCountryData = this.countriesData.filter(
