@@ -135,6 +135,13 @@
           }
         }
       }
+      .cards-listing__input {
+        .input-group {
+          .form-control {
+            padding-inline-start: 0;
+          }
+        }
+      }
     }
   }
 }
@@ -161,6 +168,13 @@
           }
           .dropdown-menu {
             width: 50%;
+          }
+        }
+      }
+      .cards-listing__input {
+        .input-group {
+          .form-control {
+            padding-inline-start: 10px;
           }
         }
       }
