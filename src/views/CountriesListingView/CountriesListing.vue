@@ -102,7 +102,6 @@ export default {
       );
     },
     filterDataByCountryName(countryName) {
-      this.dropDownText = "Filter by Region";
       if (countryName.length < 3) {
         if (countryName.length == 0) {
           this.isValidCharLength = true;
@@ -125,7 +124,6 @@ export default {
       }
     },
     filterDataByRegion(region) {
-      this.dropDownText = region;
       this.isFiltered = true;
       this.isLoading = true;
       this.filteredData = this.countriesData.filter((country) => {
