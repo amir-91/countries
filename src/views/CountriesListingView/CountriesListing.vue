@@ -45,7 +45,9 @@
       ></card-details>
     </div>
     <div class="cards-listing__no-data-matched">
-      <h1 v-if="filteredData.length == 0">No Data Matching your search</h1>
+      <h1 v-if="filteredData.length == 0 && isFiltered">
+        No Data Matching your search
+      </h1>
     </div>
   </div>
   <div v-if="isLoading && !isError" class="loader-container">

@@ -90,9 +90,11 @@ export default {
   methods: {
     filterDataByCountryName(countryName) {
       this.$emit("countryName", countryName);
+      this.dropDownText = "Filter by Region";
     },
     filterDataByRegion(region) {
       document.querySelector(".form-control").value = "";
+      this.dropDownText = region;
       this.$emit("countryRegion", region);
     },
   },
