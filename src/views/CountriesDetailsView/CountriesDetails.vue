@@ -3,15 +3,15 @@
     <a @click="hidePopUpDetails" class="cards-details-backBtn">
       <ion-icon name="close-circle-outline"></ion-icon>
     </a>
-    <div class="row">
-      <div class="col-lg-6 col-md-6 col-12">
+    <div class="cards-details-container">
+      <div class="cards-details-container__img">
         <img
           @error="onErrorImg"
           class="cards-details__img"
           :src="renderedObject.flagUrl"
         />
       </div>
-      <div class="col-lg-6 col-md-6 col-12">
+      <div class="cards-details-container__data">
         <div class="row">
           <h2 class="cards-details__title">{{ renderedObject.nativeName }}</h2>
           <div class="col-lg-6 col-md-12 col-12">
