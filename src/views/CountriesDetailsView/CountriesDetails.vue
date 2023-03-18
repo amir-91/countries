@@ -56,8 +56,8 @@
               :key="index"
               class="cards-details__related-data-btn"
             >
-              <button @click="getCountriesDetailsByCode(item)">
-                {{ item }}
+              <button @click="getCountriesDetailsByCode(item.code)">
+                {{ item.name }}
               </button>
             </div>
           </div>
@@ -73,6 +73,7 @@
 
 <script>
 import { searchByCode } from "../../services/services.js";
+import data from "./data.json";
 import defaultImage from "../../assets/images/brokenImg.svg";
 import ErrorPage from "@/components/GenericComponents/ErrorPage/ErrorPage.vue";
 export default {
@@ -89,7 +90,7 @@ export default {
   components: {
     ErrorPage,
   },
-  props: ["countryData", "allCountriesData"],
+  props: ["countryData"],
   methods: {
     getCountriesDetailsByCode(countryCode) {
       this.isLoading = true;
@@ -99,20 +100,7 @@ export default {
         (res) => {
           if (res.status == 200) {
             this.countryDetails = JSON.parse(JSON.stringify(res.data))[0];
-            this.renderedObject = {
-              nativeName: this.countryDetails.name.common,
-              population: this.countryDetails.population,
-              region: this.countryDetails.region,
-              subRegion: this.countryDetails.subregion,
-              capital: this.countryDetails.capital[0],
-              currencies: this.countryDetails.currencies,
-              languages: "",
-              startOfWeek: this.countryDetails.startOfWeek,
-              flagUrl: this.countryDetails.flags.png,
-              borderCountries: this.countryDetails.borders,
-            };
-            this.getCountryLanguages(this.countryDetails.languages);
-            this.getCountryCurrencies(this.countryDetails.currencies);
+            this.handleReneredObject(this.countryDetails);
             this.isLoading = false;
           } else {
             this.isError = true;
@@ -125,8 +113,8 @@ export default {
         }
       );
     },
-    handleReneredObject() {
-      this.countryDetails = JSON.parse(JSON.stringify(this.countryData[0]));
+    handleReneredObject(country) {
+      this.countryDetails = JSON.parse(JSON.stringify(country));
       this.renderedObject = {
         nativeName: this.countryDetails.name.common,
         population: this.countryDetails.population,
@@ -141,6 +129,7 @@ export default {
       };
       this.getCountryLanguages(this.countryDetails.languages);
       this.getCountryCurrencies(this.countryDetails.currencies);
+      this.getBorderCountries(this.countryDetails.borders);
       this.isLoading = false;
     },
     getCountryLanguages(languages) {
@@ -153,6 +142,20 @@ export default {
         this.renderedObject.currencies = value.name;
       }
     },
+    // to convert country code to country name to be rendered
+    getBorderCountries(borders) {
+      const borderCountriesName = [];
+      borders.map((border) => {
+        const borderCountryName = data.filter((country) => {
+          return country.alpha3Code == border;
+        });
+        borderCountriesName.push({
+          name: borderCountryName[0].name,
+          code: border,
+        });
+        this.renderedObject.borderCountries = borderCountriesName;
+      });
+    },
     onErrorImg(e) {
       e.target.src = defaultImage;
     },
@@ -161,7 +164,7 @@ export default {
     },
   },
   mounted() {
-    this.handleReneredObject();
+    this.handleReneredObject(this.countryData[0]);
   },
 };
 </script>

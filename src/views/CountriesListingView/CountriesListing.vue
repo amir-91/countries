@@ -5,25 +5,9 @@
       @countryRegion="filterDataByRegion($event)"
       :isValidCharLength="isValidCharLength"
     ></filters-component>
-    <div v-if="!isFiltered" class="row cards-listing__cards">
+    <div class="row cards-listing__cards">
       <div
         v-for="(item, index) in countriesData"
-        :key="index"
-        class="col-xl-3 col-lg-4 col-md-6 col-12"
-        @click="showPopUpDetails(item.name.common)"
-      >
-        <listing-card
-          :name="item.name.common"
-          :capital="item.capital"
-          :region="item.region"
-          :population="item.population"
-          :flag="item.flags.png"
-        ></listing-card>
-      </div>
-    </div>
-    <div v-else class="row cards-listing__cards">
-      <div
-        v-for="(item, index) in filteredData"
         :key="index"
         class="col-xl-3 col-lg-4 col-md-6 col-12"
         @click="showPopUpDetails(item.name.common)"
@@ -41,13 +25,10 @@
       <card-details
         @hidePopup="hidePopup($event)"
         :countryData="selectedCountryData"
-        :allCountriesData="countriesData"
       ></card-details>
     </div>
     <div class="cards-listing__no-data-matched">
-      <h1 v-if="filteredData.length == 0 && isFiltered">
-        No Data Matching your search
-      </h1>
+      <h1 v-if="filteredData.length == 0">No Data Matching your search</h1>
     </div>
   </div>
   <div v-if="isLoading && !isError" class="loader-container">
@@ -73,9 +54,9 @@ export default {
     return {
       countriesData: [],
       filteredData: [],
+      unFilteredData: [],
       countryInput: "",
       isLoading: true,
-      isFiltered: false,
       isError: false,
       showPopup: false,
       selectedCountry: "",
@@ -89,7 +70,8 @@ export default {
         "https://restcountries.com/v3.1/all",
         (res) => {
           if (res.status == 200) {
-            this.countriesData = JSON.parse(JSON.stringify(res.data));
+            this.unFilteredData = JSON.parse(JSON.stringify(res.data));
+            this.countriesData = this.unFilteredData;
             this.isLoading = false;
           } else {
             this.isLoading = false;
@@ -105,34 +87,33 @@ export default {
       if (countryName.length < 3) {
         if (countryName.length == 0) {
           this.isValidCharLength = true;
-          this.isFiltered = false;
+          this.countriesData = this.unFilteredData;
         } else {
           this.isValidCharLength = false;
-          this.isFiltered = false;
         }
       } else {
         this.isValidCharLength = true;
-        this.isFiltered = true;
         this.isLoading = true;
         this.selectedCountry = countryName;
-        this.filteredData = this.countriesData.filter((country) => {
+        this.filteredData = this.unFilteredData.filter((country) => {
           return country.name.common
             .toLowerCase()
             .includes(countryName.toLowerCase());
         });
+        this.countriesData = this.filteredData;
         this.isLoading = false;
       }
     },
     filterDataByRegion(region) {
-      this.isFiltered = true;
       this.isLoading = true;
-      this.filteredData = this.countriesData.filter((country) => {
+      this.filteredData = this.unFilteredData.filter((country) => {
         return country.region == region;
       });
       this.isLoading = false;
+      this.countriesData = this.filteredData;
     },
     getCountryDetails(country) {
-      this.selectedCountryData = this.countriesData.filter(
+      this.selectedCountryData = this.unFilteredData.filter(
         (selectedCountry) => {
           return selectedCountry.name.common == country;
         }
