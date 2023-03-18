@@ -144,17 +144,19 @@ export default {
     },
     // to convert country code to country name to be rendered
     getBorderCountries(borders) {
-      const borderCountriesName = [];
-      borders.map((border) => {
-        const borderCountryName = data.filter((country) => {
-          return country.alpha3Code == border;
+      if (borders) {
+        const borderCountriesName = [];
+        borders.map((border) => {
+          const borderCountryName = data.filter((country) => {
+            return country.alpha3Code == border;
+          });
+          borderCountriesName.push({
+            name: borderCountryName[0].name,
+            code: border,
+          });
+          this.renderedObject.borderCountries = borderCountriesName;
         });
-        borderCountriesName.push({
-          name: borderCountryName[0].name,
-          code: border,
-        });
-        this.renderedObject.borderCountries = borderCountriesName;
-      });
+      }
     },
     onErrorImg(e) {
       e.target.src = defaultImage;
