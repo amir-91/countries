@@ -93,7 +93,6 @@ export default {
       this.dropDownText = "Filter by Region";
     },
     filterDataByRegion(region) {
-      console.log(document.querySelector(".form-control"));
       document.querySelector(".form-control").value = "";
       this.dropDownText = region;
       this.$emit("countryRegion", region);
