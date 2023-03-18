@@ -105,12 +105,16 @@ export default {
       }
     },
     filterDataByRegion(region) {
-      this.isLoading = true;
-      this.filteredData = this.unFilteredData.filter((country) => {
-        return country.region == region;
-      });
-      this.isLoading = false;
-      this.countriesData = this.filteredData;
+      if (region == "All Regions") {
+        this.countriesData = this.unFilteredData;
+      } else {
+        this.isLoading = true;
+        this.filteredData = this.unFilteredData.filter((country) => {
+          return country.region == region;
+        });
+        this.isLoading = false;
+        this.countriesData = this.filteredData;
+      }
     },
     getCountryDetails(country) {
       this.selectedCountryData = this.unFilteredData.filter(

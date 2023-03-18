@@ -8,6 +8,7 @@
         <input
           v-model="countryInput"
           type="text"
+          id="form-input"
           class="form-control"
           placeholder="Search for a country...."
           aria-label="Username"
@@ -32,6 +33,14 @@
           {{ dropDownText }}
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li>
+            <a
+              @click="filterDataByRegion('All Regions')"
+              class="dropdown-item"
+              href="#"
+              >All Regions</a
+            >
+          </li>
           <li>
             <a
               @click="filterDataByRegion('Africa')"
@@ -93,7 +102,7 @@ export default {
       this.dropDownText = "Filter by Region";
     },
     filterDataByRegion(region) {
-      document.querySelector(".form-control").value = "";
+      this.countryInput = "";
       this.dropDownText = region;
       this.$emit("countryRegion", region);
     },
