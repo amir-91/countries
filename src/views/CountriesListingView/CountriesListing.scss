@@ -74,6 +74,9 @@
                   color: var(--primary);
                 }
               }
+              &:active {
+                background-color: #e9ecef;
+              }
             }
           }
         }
@@ -155,6 +158,9 @@
       .cards-listing__dropdown {
         .dropdown {
           .dropdown-toggle {
+            width: 40%;
+          }
+          .dropdown-menu {
             width: 40%;
           }
         }
