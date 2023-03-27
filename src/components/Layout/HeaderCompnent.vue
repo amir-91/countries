@@ -7,7 +7,6 @@
         </div>
         <div class="col header__dark-mode-btn">
           <button @click="darkModeToggling">
-            <!-- <img src="../../assets/images/moon-regular.svg" /> -->
             <ion-icon name="moon"></ion-icon> Dark Mode
           </button>
         </div>

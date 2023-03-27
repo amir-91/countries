@@ -108,11 +108,9 @@ export default {
       if (region == "All Regions") {
         this.countriesData = this.unFilteredData;
       } else {
-        this.isLoading = true;
         this.filteredData = this.unFilteredData.filter((country) => {
           return country.region == region;
         });
-        this.isLoading = false;
         this.countriesData = this.filteredData;
       }
     },
