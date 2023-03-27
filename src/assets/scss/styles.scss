@@ -1,11 +1,11 @@
 @import "./mixins.scss";
-@import "./varaibles.scss";
 @import "../../views/CountriesDetailsView/CountriesDetails.scss";
 @import "../../views/CountriesListingView/CountriesListing.scss";
 @import "../../components/Layout/HeaderComponent.scss";
 @import "../../components/GenericComponents/ListingCards/ListingCard.scss";
 @import "../../components/GenericComponents/ErrorPage/ErrorPage.scss";
 @import "../../components/GenericComponents/NotFound/NotFound.scss";
+@import "../../components/BackToTopBtn/BackToTopBtn.scss";
 
 body {
   background-color: var(--secondary);
@@ -24,6 +24,7 @@ body {
   --secondary: #f1f1f1;
   --text: #000;
   --text-fade: #696c6f;
+  --backBtn: #212e37;
   font-size: 16px;
 }
 
@@ -32,4 +33,5 @@ body {
   --secondary: #212e37;
   --text: #fff;
   --text-fade: #ced2d6;
+  --backBtn: #f1f1f1;
 }
