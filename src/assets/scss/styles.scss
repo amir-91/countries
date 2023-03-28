@@ -16,6 +16,9 @@ body {
     img {
       width: 50px;
     }
+    @media (max-width: 767px) {
+      left: 45%;
+    }
   }
   font-family: "Nunito Sans", sans-serif;
 }
