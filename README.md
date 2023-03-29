@@ -1,29 +1,21 @@
-# countries
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Setup](#setup)
 
-## Project setup
-```
-npm install
-```
+## General info
+Design preview for the REST Countries API with color theme switcher
+	
+## Technologies
+Project is created with:
+* "vue": "^3.2.13"
+* "bootstrap": "^5.0.2"
+	
+## Setup
+To run this project, install it locally using npm:
 
-### Compiles sass for development
 ```
-npm run scss
+$ cd ../rest-countries-api
+$ npm install
+$ npm run serve
 ```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
