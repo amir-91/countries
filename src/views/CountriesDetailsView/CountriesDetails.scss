@@ -85,6 +85,9 @@
     .cards-details__related-data {
       margin-top: 10px;
     }
+    .cards-details__data {
+      margin-bottom: 0;
+    }
   }
 }
 @media (max-width: 767px) {
@@ -92,6 +95,9 @@
     margin-bottom: 40px;
     padding: 70px 20px 80px;
     margin: 60px 20px;
+    .cards-details__data {
+      margin-bottom: 1rem;
+    }
     .cards-details-backBtn {
       font-size: 25px;
       img {

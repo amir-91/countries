@@ -119,10 +119,12 @@ export default {
         nativeName: this.countryDetails.name.common,
         population: this.countryDetails.population,
         region: this.countryDetails.region,
-        subRegion: this.countryDetails.subregion,
-        capital: this.countryDetails.capital[0],
-        currencies: this.countryDetails.currencies,
-        languages: "",
+        subRegion: this.countryDetails.subregion
+          ? this.countryDetails.subregion
+          : "-",
+        capital: this.countryDetails.capital
+          ? this.countryDetails.capital[0]
+          : "-",
         startOfWeek: this.countryDetails.startOfWeek,
         flagUrl: this.countryDetails.flags.png,
         borderCountries: this.countryDetails.borders,
@@ -133,13 +135,25 @@ export default {
       this.isLoading = false;
     },
     getCountryLanguages(languages) {
-      for (const [, value] of Object.entries(languages)) {
-        this.renderedObject.languages = value;
+      if (languages) {
+        const langArray = [];
+        for (const [, value] of Object.entries(languages)) {
+          langArray.push(value);
+        }
+        this.renderedObject.languages = langArray.join(", ");
+      } else {
+        this.renderedObject.languages = "-";
       }
     },
     getCountryCurrencies(currency) {
-      for (const [, value] of Object.entries(currency)) {
-        this.renderedObject.currencies = value.name;
+      if (currency) {
+        const currencyArray = [];
+        for (const [, value] of Object.entries(currency)) {
+          currencyArray.push(value.name);
+        }
+        this.renderedObject.currencies = currencyArray.join(", ");
+      } else {
+        this.renderedObject.currencies = "-";
       }
     },
     // to convert country code to country name to be rendered
