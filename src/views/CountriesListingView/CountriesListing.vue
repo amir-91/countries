@@ -55,7 +55,6 @@ export default {
       countriesData: [],
       filteredData: [],
       unFilteredData: [],
-      countryInput: "",
       isLoading: true,
       isError: false,
       showPopup: false,
