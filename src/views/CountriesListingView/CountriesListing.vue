@@ -75,6 +75,7 @@ export default {
             this.unFilteredData = JSON.parse(JSON.stringify(res.data));
             this.filteredData = this.unFilteredData;
             this.countriesData = this.unFilteredData;
+            this.filteredDataByCountry = this.unFilteredData;
             this.isLoading = false;
           } else {
             this.isLoading = false;
