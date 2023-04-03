@@ -99,7 +99,7 @@ export default {
   methods: {
     filterDataByCountryName(countryName) {
       this.$emit("countryName", countryName);
-      this.dropDownText = "Filter by Region";
+      //this.dropDownText = "Filter by Region";
     },
     filterDataByRegion(region) {
       this.countryInput = "";

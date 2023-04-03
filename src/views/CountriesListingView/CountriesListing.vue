@@ -28,7 +28,9 @@
       ></card-details>
     </div>
     <div class="cards-listing__no-data-matched">
-      <h1 v-if="filteredData.length == 0">No Data Matching your search</h1>
+      <h1 v-if="filteredDataByCountry.length == 0">
+        No Data Matching your search
+      </h1>
     </div>
   </div>
   <div v-if="isLoading && !isError" class="loader-container">
@@ -55,6 +57,7 @@ export default {
       countriesData: [],
       filteredData: [],
       unFilteredData: [],
+      filteredDataByCountry: [],
       isLoading: true,
       isError: false,
       showPopup: false,
@@ -70,6 +73,7 @@ export default {
         (res) => {
           if (res.status == 200) {
             this.unFilteredData = JSON.parse(JSON.stringify(res.data));
+            this.filteredData = this.unFilteredData;
             this.countriesData = this.unFilteredData;
             this.isLoading = false;
           } else {
@@ -86,26 +90,25 @@ export default {
       if (countryName.length < 3) {
         if (countryName.length == 0) {
           this.isValidCharLength = true;
-          this.countriesData = this.unFilteredData;
+          this.countriesData = this.filteredData;
         } else {
           this.isValidCharLength = false;
         }
       } else {
         this.isValidCharLength = true;
-        this.isLoading = true;
         this.selectedCountry = countryName;
-        this.filteredData = this.unFilteredData.filter((country) => {
+        this.filteredDataByCountry = this.filteredData.filter((country) => {
           return country.name.common
             .toLowerCase()
             .includes(countryName.toLowerCase());
         });
-        this.countriesData = this.filteredData;
-        this.isLoading = false;
+        this.countriesData = this.filteredDataByCountry;
       }
     },
     filterDataByRegion(region) {
       if (region == "All Regions") {
         this.countriesData = this.unFilteredData;
+        this.filteredData = this.unFilteredData;
       } else {
         this.filteredData = this.unFilteredData.filter((country) => {
           return country.region == region;
